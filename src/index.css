@@ -5326,13 +5326,13 @@ button {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   QUOTE PAGE — Clean, Modern & Professional Styling
+   QUOTE PAGE — Ultra-Clean, Modern & Professional Styling
    ═══════════════════════════════════════════════════════════════════════ */
 
 .quote-page-section {
   background: var(--bg-light);
   min-height: 100vh;
-  padding-bottom: 90px;
+  padding-bottom: 100px;
 }
 
 /* ── Hero Banner ── */
@@ -5341,10 +5341,10 @@ button {
   background-image: url('/quote_hero_banner.png');
   background-size: cover;
   background-position: center;
-  padding: 85px 0 65px;
+  padding: 100px 0 80px;
   color: #fff;
   overflow: hidden;
-  margin-bottom: 50px;
+  margin-bottom: 55px;
 }
 .quote-hero-overlay {
   position: absolute;
@@ -5352,7 +5352,7 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(10, 22, 40, 0.88) 0%, rgba(14, 34, 38, 0.78) 50%, rgba(20, 82, 79, 0.65) 100%);
+  background: linear-gradient(135deg, rgba(10, 22, 40, 0.9) 0%, rgba(14, 34, 38, 0.82) 50%, rgba(20, 82, 79, 0.7) 100%);
   z-index: 1;
 }
 .quote-hero-container {
@@ -5363,36 +5363,52 @@ button {
   align-items: center;
   text-align: center;
 }
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  transition: color 0.3s ease;
+}
+.back-link:hover {
+  color: #7ce3db;
+}
 .quote-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   background: rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  padding: 6px 18px;
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 7px 20px;
   border-radius: 50px;
   font-size: 0.78rem;
   font-weight: 700;
   color: #fff;
-  letter-spacing: 1.2px;
-  margin-bottom: 18px;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+}
+.quote-badge i {
+  color: #7ce3db;
 }
 .quote-hero-title {
-  font-size: 2.6rem;
+  font-size: 2.75rem;
   font-weight: 800;
   line-height: 1.2;
   color: #fff;
-  margin-bottom: 14px;
-  max-width: 720px;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  margin-bottom: 16px;
+  max-width: 760px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
 .quote-hero-subtitle {
-  font-size: 1.02rem;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 600px;
-  line-height: 1.65;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 620px;
+  line-height: 1.7;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
 /* ── Main Container ── */
@@ -5404,11 +5420,11 @@ button {
 /* ── Price Match Card ── */
 .quote-price-card {
   background: linear-gradient(135deg, #0e2226 0%, #1c6f6b 100%);
-  border-radius: 20px;
-  padding: 32px 36px;
+  border-radius: 24px;
+  padding: 38px 44px;
   color: #ffffff;
-  margin-bottom: 40px;
-  box-shadow: 0 14px 40px rgba(28, 111, 107, 0.22);
+  margin-bottom: 45px;
+  box-shadow: 0 16px 45px rgba(28, 111, 107, 0.24);
   border: 1px solid rgba(124, 227, 219, 0.35);
   position: relative;
   overflow: hidden;
@@ -5416,43 +5432,43 @@ button {
 .quote-price-badge-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 .quote-price-tag {
   background: #7ce3db;
   color: #0e2226;
-  padding: 5px 16px;
+  padding: 6px 18px;
   border-radius: 50px;
   font-weight: 800;
-  font-size: 0.75rem;
-  letter-spacing: 1px;
+  font-size: 0.76rem;
+  letter-spacing: 1.2px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 .quote-price-guarantee {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.16);
   color: #fff;
-  padding: 5px 16px;
+  padding: 6px 18px;
   border-radius: 50px;
   font-weight: 700;
-  font-size: 0.75rem;
+  font-size: 0.76rem;
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 .quote-price-card h2 {
-  font-size: 1.65rem;
+  font-size: 1.75rem;
   font-weight: 800;
   color: #ffffff;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 .quote-price-card p {
-  font-size: 0.96rem;
+  font-size: 0.98rem;
   color: rgba(255, 255, 255, 0.92);
-  line-height: 1.65;
+  line-height: 1.7;
   margin-bottom: 0;
 }
 
@@ -5460,7 +5476,7 @@ button {
 .quote-content-grid {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
-  gap: 36px;
+  gap: 40px;
   align-items: start;
 }
 
@@ -5468,36 +5484,36 @@ button {
 .quote-sidebar {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 28px;
 }
 .quote-sidebar-box {
   background: #ffffff;
-  border-radius: 20px;
-  padding: 28px 26px;
+  border-radius: 22px;
+  padding: 32px 28px;
   border: 1px solid var(--border-light);
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.05);
 }
 .quote-box-header {
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 20px;
-  padding-bottom: 14px;
+  margin-bottom: 22px;
+  padding-bottom: 16px;
   border-bottom: 1px solid var(--border-light);
 }
 .quote-box-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
   background: rgba(28, 111, 107, 0.08);
   color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
 }
 .quote-box-header h3 {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 800;
   color: var(--text-dark);
   margin: 0;
@@ -5505,16 +5521,16 @@ button {
 .quote-info-item {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
-  margin-bottom: 18px;
+  gap: 16px;
+  margin-bottom: 20px;
 }
 .quote-info-item:last-child {
   margin-bottom: 0;
 }
 .quote-info-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
   background: var(--bg-light);
   color: var(--primary);
   display: flex;
@@ -5525,47 +5541,49 @@ button {
   margin-top: 2px;
 }
 .quote-info-item h4 {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--text-dark);
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
 .quote-info-item p {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: var(--text-body);
-  line-height: 1.5;
+  line-height: 1.55;
   margin: 0;
 }
 .quote-info-item a {
   color: var(--primary);
   font-weight: 600;
   text-decoration: none;
+  transition: color 0.25s ease;
 }
 .quote-info-item a:hover {
+  color: var(--primary-dark);
   text-decoration: underline;
 }
 
 /* ── Form Card ── */
 .quote-form-card {
   background: #ffffff;
-  border-radius: 20px;
-  padding: 36px 32px;
+  border-radius: 22px;
+  padding: 40px 36px;
   border: 1px solid var(--border-light);
-  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 16px 45px rgba(15, 23, 42, 0.06);
 }
 .quote-form-header {
-  margin-bottom: 26px;
-  padding-bottom: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 18px;
   border-bottom: 1px solid var(--border-light);
 }
 .quote-form-header h3 {
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   font-weight: 800;
   color: var(--text-dark);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 .quote-form-header p {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   color: var(--text-muted);
   margin: 0;
 }
@@ -5573,35 +5591,40 @@ button {
 .quote-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
 }
 .quote-form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: 20px;
 }
 .quote-input-group {
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 8px;
 }
 .quote-input-group label {
-  font-size: 0.84rem;
+  font-size: 0.86rem;
   font-weight: 700;
   color: var(--text-dark);
+  letter-spacing: 0.2px;
 }
 .quote-input-group input,
 .quote-input-group select,
 .quote-input-group textarea {
   width: 100%;
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1px solid #cbd5e1;
-  background: #f8fafc;
-  font-size: 0.92rem;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 1.5px solid #e2e8f0;
+  background: #ffffff;
+  font-size: 0.93rem;
   color: var(--text-dark);
   font-family: inherit;
   transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.quote-input-group input::placeholder,
+.quote-input-group textarea::placeholder {
+  color: #94a3b8;
 }
 .quote-input-group input:focus,
 .quote-input-group select:focus,
@@ -5609,19 +5632,20 @@ button {
   outline: none;
   background: #ffffff;
   border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(28, 111, 107, 0.12);
+  box-shadow: 0 0 0 4px rgba(28, 111, 107, 0.14);
 }
 .quote-submit-btn {
   width: 100%;
-  padding: 16px;
-  font-size: 1rem;
+  padding: 17px;
+  font-size: 1.02rem;
   font-weight: 700;
-  border-radius: 12px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  margin-top: 6px;
+  gap: 10px;
+  margin-top: 8px;
+  box-shadow: 0 10px 25px rgba(215, 38, 46, 0.25);
 }
 
 /* ── Quote Responsive ── */
