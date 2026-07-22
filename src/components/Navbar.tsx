@@ -37,8 +37,8 @@ export const Navbar: React.FC = () => {
 
         <nav className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
           <Link to="/" onClick={closeMobileMenu}>HOME</Link>
-          <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}>ABOUT US</a>
-          <a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }}>OUR SERVICES</a>
+          <Link to="/about" onClick={closeMobileMenu}>ABOUT US</Link>
+          <Link to="/services" onClick={closeMobileMenu}>OUR SERVICES</Link>
           <Link to="/quote" className="btn btn-accent nav-cta-btn mobile-only" onClick={closeMobileMenu}>GET A QUOTE</Link>
         </nav>
 

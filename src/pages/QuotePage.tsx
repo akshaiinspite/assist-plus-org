@@ -1,127 +1,184 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { gsap } from 'gsap';
 
 export const QuotePage: React.FC = () => {
+  const pageRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (!pageRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.quote-hero-animate', 
+        { opacity: 0, y: 25 }, 
+        { opacity: 1, y: 0, duration: 0.75, stagger: 0.1, ease: 'power3.out' }
+      );
+
+      gsap.fromTo('.quote-card-animate', 
+        { opacity: 0, y: 30 }, 
+        { opacity: 1, y: 0, duration: 0.8, delay: 0.25, ease: 'power3.out' }
+      );
+    }, pageRef);
+
+    return () => ctx.revert();
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Thank you! Your message has been sent successfully. We will get back to you shortly.');
+    alert('Thank you! Your quote request has been sent successfully. We will review your details and get back to you shortly.');
   };
 
   return (
-    <section className="quote-page">
-      <div className="quote-hero">
-        <div className="container">
-          <Link to="/" className="back-link">
+    <section className="quote-page-section" ref={pageRef}>
+      {/* HERO BANNER */}
+      <div className="quote-hero-banner">
+        <div className="quote-hero-overlay"></div>
+        <div className="container quote-hero-container">
+          <Link to="/" className="back-link quote-hero-animate">
             <i className="fas fa-arrow-left"></i> Back to Home
           </Link>
-          <h1>We’re Here to Support Your Staffing Needs</h1>
-          <p>Whether you need long term staffing or urgent cover, our team is ready to help 24/7 across the UK and Ireland.</p>
+          <div className="quote-badge quote-hero-animate">
+            <i className="fas fa-shield-heart"></i> CQC COMPLIANT &amp; DBS CHECKED
+          </div>
+          <h1 className="quote-hero-title quote-hero-animate">
+            Request a Personalised <span className="about-highlight">Staffing Quote</span>
+          </h1>
+          <p className="quote-hero-subtitle quote-hero-animate">
+            Partner with Assist Plus Care UK for reliable healthcare workforce solutions. Fill out the quick request form below or contact our 24/7 desk directly.
+          </p>
         </div>
       </div>
 
-      <div className="container" style={{ marginTop: '40px' }}>
-        {/* PRICING & PRICE MATCH GUARANTEE BANNER */}
-        <div className="pricing-banner-card" style={{
-          background: 'linear-gradient(135deg, #0e2226, #1c6f6b)',
-          borderRadius: '20px',
-          padding: '30px 40px',
-          color: '#ffffff',
-          marginBottom: '50px',
-          boxShadow: '0 12px 35px rgba(28, 111, 107, 0.25)',
-          border: '1px solid rgba(124, 227, 219, 0.3)'
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
-            <span style={{ background: '#7ce3db', color: '#0e2226', padding: '4px 14px', borderRadius: '50px', fontWeight: '800', fontSize: '0.8rem', letterSpacing: '1px' }}>
-              <i className="fas fa-tags"></i> TRANSPARENT PRICING
-            </span>
-            <span style={{ background: 'rgba(255,255,255,0.15)', color: '#fff', padding: '4px 14px', borderRadius: '50px', fontWeight: '700', fontSize: '0.8rem' }}>
-              <i className="fas fa-check-circle"></i> Price Match Guarantee
-            </span>
+      <div className="container quote-main-container">
+        {/* PRICE MATCH GUARANTEE CARD */}
+        <div className="quote-price-card quote-card-animate">
+          <div className="quote-price-badge-row">
+            <span className="quote-price-tag"><i className="fas fa-tags"></i> TRANSPARENT PRICING</span>
+            <span className="quote-price-guarantee"><i className="fas fa-circle-check"></i> Price Match Guarantee</span>
           </div>
-          <h2 style={{ fontSize: '1.8rem', fontWeight: '800', marginBottom: '10px', color: '#fff' }}>Competitive &amp; Transparent Rates</h2>
-          <p style={{ fontSize: '0.98rem', color: 'rgba(255,255,255,0.9)', lineHeight: '1.65', marginBottom: '12px' }}>
-            Assist Plus Care UK offers competitive and transparent pricing designed to support care providers without compromising quality. 
-            <strong> If you receive a lower quote from another agency, we will match it</strong> — ensuring you receive the best value without sacrificing care standards.
+          <h2>Competitive &amp; Transparent Rates</h2>
+          <p>
+            Assist Plus Care UK offers competitive rates tailored to support care providers. 
+            <strong> If you receive a lower written quote from another healthcare staffing provider, we guarantee to match it</strong> — delivering maximum value without compromising clinical standards.
           </p>
-          <span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.75)', fontStyle: 'italic' }}>
-            * Pricing varies based on staff type, shift length, location, and specialist requirements. Fill in the form below or call us directly for a personalised quote.
-          </span>
         </div>
 
-        <div className="contact-grid">
-          <div className="contact-info">
-            <div className="contact-item">
-              <div className="contact-icon"><i className="fas fa-map-marker-alt"></i></div>
-              <div>
-                <h4>Our Address</h4>
-                <p>48 Mortise House, 11 Chailey Place, Hayes, UB1 3HW</p>
+        {/* 2-COLUMN MAIN CONTENT GRID */}
+        <div className="quote-content-grid quote-card-animate">
+          {/* LEFT SIDEBAR: CONTACT & COVERAGE CARDS */}
+          <div className="quote-sidebar">
+            {/* CONTACT DETAILS CARD */}
+            <div className="quote-sidebar-box">
+              <div className="quote-box-header">
+                <div className="quote-box-icon"><i className="fas fa-address-book"></i></div>
+                <h3>Contact Information</h3>
+              </div>
+
+              <div className="quote-info-item">
+                <div className="quote-info-icon"><i className="fas fa-location-dot"></i></div>
+                <div>
+                  <h4>Office Address</h4>
+                  <p>48 Mortise House, 11 Chailey Place, Hayes, UB1 3HW</p>
+                </div>
+              </div>
+
+              <div className="quote-info-item">
+                <div className="quote-info-icon"><i className="fas fa-phone"></i></div>
+                <div>
+                  <h4>Phone Numbers (24/7 Support)</h4>
+                  <p>Office Desk: <a href="tel:02036526052">020 3652 6052</a></p>
+                  <p>On-Call Helpline: <a href="tel:07448295850">+44 07448 295850</a></p>
+                </div>
+              </div>
+
+              <div className="quote-info-item">
+                <div className="quote-info-icon"><i className="fas fa-envelope"></i></div>
+                <div>
+                  <h4>Email Address</h4>
+                  <p><a href="mailto:admin@assistpluscare.co.uk">admin@assistpluscare.co.uk</a></p>
+                </div>
               </div>
             </div>
 
-            <div className="contact-item">
-              <div className="contact-icon"><i className="fas fa-phone-alt"></i></div>
-              <div>
-                <h4>Phone Numbers (24/7 Support)</h4>
-                <p>
-                  <a href="tel:02036526052">020 3652 6052</a><br />
-                  <a href="tel:07448295850">+44 07448 295850</a>
-                </p>
+            {/* COVERAGE & HOURS CARD */}
+            <div className="quote-sidebar-box">
+              <div className="quote-box-header">
+                <div className="quote-box-icon"><i className="fas fa-clock"></i></div>
+                <h3>Coverage &amp; Operations</h3>
               </div>
-            </div>
 
-            <div className="contact-item">
-              <div className="contact-icon"><i className="fas fa-envelope"></i></div>
-              <div>
-                <h4>Email Address</h4>
-                <p><a href="mailto:admin@assistpluscare.co.uk">admin@assistpluscare.co.uk</a></p>
+              <div className="quote-info-item">
+                <div className="quote-info-icon"><i className="fas fa-globe"></i></div>
+                <div>
+                  <h4>Coverage Area</h4>
+                  <p>Full UK &amp; Ireland Coverage</p>
+                </div>
               </div>
-            </div>
 
-            <div className="contact-item">
-              <div className="contact-icon"><i className="fas fa-globe"></i></div>
-              <div>
-                <h4>Coverage Area</h4>
-                <p>Full UK &amp; Ireland Coverage</p>
-              </div>
-            </div>
-
-            <div className="contact-item">
-              <div className="contact-icon"><i className="fas fa-clock"></i></div>
-              <div>
-                <h4>Operating Hours</h4>
-                <p>24/7 Round-the-Clock Emergency Cover &amp; Staffing Assistance</p>
+              <div className="quote-info-item">
+                <div className="quote-info-icon"><i className="fas fa-headset"></i></div>
+                <div>
+                  <h4>Operating Hours</h4>
+                  <p>24/7 Round-the-Clock Emergency Cover &amp; Staffing Assistance</p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="contact-form-wrap">
-            <h3>Request Your Care Plan or Staffing Quote</h3>
-            <form className="contact-form" onSubmit={handleSubmit}>
-              <div className="form-row">
-                <input type="text" placeholder="Full Name / Organisation" id="quote-name" required />
-                <input type="email" placeholder="Email Address" id="quote-email" required />
+          {/* RIGHT SIDE: CLEAN FORM CARD */}
+          <div className="quote-form-card">
+            <div className="quote-form-header">
+              <h3>Request Staffing Quote</h3>
+              <p>Complete your requirements below for a prompt, tailored proposal.</p>
+            </div>
+
+            <form className="quote-form" onSubmit={handleSubmit}>
+              <div className="quote-form-row">
+                <div className="quote-input-group">
+                  <label htmlFor="quote-name">Full Name / Organisation *</label>
+                  <input type="text" id="quote-name" placeholder="e.g. John Smith / St Jude Care" required />
+                </div>
+                <div className="quote-input-group">
+                  <label htmlFor="quote-email">Email Address *</label>
+                  <input type="email" id="quote-email" placeholder="name@organisation.com" required />
+                </div>
               </div>
-              <div className="form-row">
-                <input type="tel" placeholder="Phone Number" id="quote-phone" required />
-                <select id="quote-service" required defaultValue="">
-                  <option value="" disabled>Select Staffing Requirement</option>
-                  <option>Registered Nurses (NHS Experienced)</option>
-                  <option>Mental Health Nurses</option>
-                  <option>Healthcare Assistants (HCAs)</option>
-                  <option>Support Workers</option>
-                  <option>Live in Carers</option>
-                  <option>Specialist Nursing Services (Stoma/Palliative/Diabetes)</option>
-                  <option>Temporary Staffing &amp; Bulk Bookings</option>
-                  <option>24/7 Emergency Cover</option>
-                </select>
+
+              <div className="quote-form-row">
+                <div className="quote-input-group">
+                  <label htmlFor="quote-phone">Phone Number *</label>
+                  <input type="tel" id="quote-phone" placeholder="020 1234 5678" required />
+                </div>
+                <div className="quote-input-group">
+                  <label htmlFor="quote-service">Staffing Requirement *</label>
+                  <select id="quote-service" required defaultValue="">
+                    <option value="" disabled>Select Staffing Requirement</option>
+                    <option>Registered Nurses (RN)</option>
+                    <option>Mental Health Nurses (RMN)</option>
+                    <option>Healthcare Assistants (HCAs)</option>
+                    <option>Support Workers</option>
+                    <option>Live in Carers</option>
+                    <option>Specialist Nursing Services</option>
+                    <option>Temporary Staffing &amp; Bulk Bookings</option>
+                    <option>24/7 Emergency Cover</option>
+                  </select>
+                </div>
               </div>
-              <textarea placeholder="Describe your staffing or care requirements..." rows={5} id="quote-message" required></textarea>
-              <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                Request Personalised Quote <i className="fas fa-paper-plane"></i>
+
+              <div className="quote-input-group">
+                <label htmlFor="quote-message">Describe Your Staffing Needs *</label>
+                <textarea 
+                  id="quote-message" 
+                  rows={5} 
+                  placeholder="Provide details on role type, estimated shifts, start date, location, and specific care skills required..." 
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" className="btn btn-accent btn-glow quote-submit-btn">
+                Submit Quote Request <i className="fas fa-paper-plane"></i>
               </button>
             </form>
           </div>
