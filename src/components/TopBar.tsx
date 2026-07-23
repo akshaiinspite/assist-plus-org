@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const TopBar: React.FC = () => {
   return (
@@ -22,12 +23,12 @@ export const TopBar: React.FC = () => {
         </div>
 
         <div className="top-bar-right">
-          <a href="/quote" className="top-btn">
+          <Link to="/quote" className="top-btn">
             <i className="fas fa-phone-volume"></i> Request a Callback
-          </a>
-          <a href="/quote" className="top-btn top-btn-outline">
+          </Link>
+          <Link to="/quote" className="top-btn top-btn-outline">
             <i className="fas fa-file-download"></i> Request a Brochure
-          </a>
+          </Link>
         </div>
       </div>
     </div>

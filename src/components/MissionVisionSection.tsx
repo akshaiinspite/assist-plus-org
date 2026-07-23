@@ -71,52 +71,52 @@ export const MissionVisionSection: React.FC = () => {
 
       // 1. Section Entrance
       masterTl
-        .to(sectionRef.current, { opacity: 1, y: 0, duration: 0.8, ease: 'power4.out' })
-        .fromTo(titleRef.current, { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4')
+        .to(sectionRef.current, { opacity: 1, y: 0, duration: 0.45, ease: 'power4.out' })
+        .fromTo(titleRef.current, { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }, '-=0.3')
 
         // 2. Draw Curved Pathway Line between Mission & Vision
-        .to(pathLineRef.current, { strokeDashoffset: 0, duration: 1.1, ease: 'power2.inOut' }, '-=0.2')
+        .to(pathLineRef.current, { strokeDashoffset: 0, duration: 0.6, ease: 'power2.inOut' }, '-=0.2')
 
         // 3. Mission Card Activation
-        .to(missionCardRef.current, { scale: 1, opacity: 1, y: 0, duration: 0.8, ease: 'power4.out' }, '-=0.5')
+        .to(missionCardRef.current, { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: 'power4.out' }, '-=0.35')
 
         // 4. Mission Heading Wipe & Staggered Description Lines
-        .to(missionHeadingRef.current, { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3')
+        .to(missionHeadingRef.current, { opacity: 1, duration: 0.35, ease: 'power2.out' }, '-=0.25')
         .fromTo(
           missionLines,
           { y: 12, opacity: 0, filter: 'blur(6px)' },
-          { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.6, stagger: 0.14, ease: 'power2.out' },
-          '-=0.3'
+          { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.35, stagger: 0.08, ease: 'power2.out' },
+          '-=0.2'
         )
 
         // 5. Mission SVG Illustration Assembly
-        .to(missionCrossRef.current, { strokeDashoffset: 0, duration: 0.7, ease: 'power2.inOut' }, '-=0.4')
-        .to(missionSilhouettesRef.current, { opacity: 1, duration: 0.5 }, '-=0.2')
-        .to(missionPulseRef.current, { strokeDashoffset: 0, duration: 0.6, ease: 'power2.out' }, '-=0.2')
+        .to(missionCrossRef.current, { strokeDashoffset: 0, duration: 0.4, ease: 'power2.inOut' }, '-=0.25')
+        .to(missionSilhouettesRef.current, { opacity: 1, duration: 0.3 }, '-=0.15')
+        .to(missionPulseRef.current, { strokeDashoffset: 0, duration: 0.35, ease: 'power2.out' }, '-=0.15')
 
-        // 6. Pause (0.3s)
-        .to({}, { duration: 0.3 })
+        // 6. Brief Pause
+        .to({}, { duration: 0.1 })
 
         // 7. Pathway Arrow Growth to Vision
-        .to(arrowPathRef.current, { strokeDashoffset: 0, duration: 0.8, ease: 'power2.inOut' })
+        .to(arrowPathRef.current, { strokeDashoffset: 0, duration: 0.45, ease: 'power2.inOut' })
 
         // 8. Vision Card Activation
-        .to(visionCardRef.current, { scale: 1, opacity: 1, y: 0, duration: 0.8, ease: 'power4.out' }, '-=0.4')
+        .to(visionCardRef.current, { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: 'power4.out' }, '-=0.3')
 
         // 9. Vision Heading Reveal & Description Reveal
-        .to(visionHeadingRef.current, { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', opacity: 1, duration: 0.7, ease: 'power3.out' }, '-=0.4')
+        .to(visionHeadingRef.current, { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', opacity: 1, duration: 0.4, ease: 'power3.out' }, '-=0.3')
         .fromTo(
           visionLines,
           { y: 12, opacity: 0, filter: 'blur(6px)' },
-          { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.6, stagger: 0.14, ease: 'power2.out' },
-          '-=0.3'
+          { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.35, stagger: 0.08, ease: 'power2.out' },
+          '-=0.2'
         )
 
         // 10. Vision SVG Illustration Assembly
-        .to(visionHospitalRef.current, { strokeDashoffset: 0, duration: 0.7, ease: 'power2.inOut' }, '-=0.4')
-        .to(visionDoctorsRef.current, { opacity: 1, duration: 0.5 }, '-=0.2')
-        .to(visionNodesRef.current, { opacity: 1, scale: 1, duration: 0.5, stagger: 0.1, ease: 'back.out(1.5)' }, '-=0.2')
-        .to(visionShieldRef.current, { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(2)' }, '-=0.2');
+        .to(visionHospitalRef.current, { strokeDashoffset: 0, duration: 0.4, ease: 'power2.inOut' }, '-=0.25')
+        .to(visionDoctorsRef.current, { opacity: 1, duration: 0.3 }, '-=0.15')
+        .to(visionNodesRef.current, { opacity: 1, scale: 1, duration: 0.3, stagger: 0.06, ease: 'back.out(1.5)' }, '-=0.15')
+        .to(visionShieldRef.current, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2)' }, '-=0.15');
 
       // Subtle 6s Idle Breathing Loop
       gsap.to([missionCardRef.current, visionCardRef.current], {

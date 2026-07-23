@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion, useMotionValue, useTransform, useInView } from 'framer-motion';
 import * as THREE from 'three';
+import { HeroBrandThreeBg } from '../components/HeroBrandThreeBg';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -392,15 +393,59 @@ export const AboutPage: React.FC = () => {
         );
       });
 
-      /* Journey Section — SVG Line Draw */
+      /* Journey Section — SVG Line Draw & Doctor Icon Scroll Movement */
       const journeyPath = pageRef.current?.querySelector('.about-journey-path') as SVGPathElement | null;
       if (journeyPath) {
         const len = journeyPath.getTotalLength();
         gsap.set(journeyPath, { strokeDasharray: len, strokeDashoffset: len });
-        gsap.to(journeyPath, {
-          strokeDashoffset: 0, duration: 2, ease: 'power2.inOut',
-          scrollTrigger: { trigger: '.about-journey-section', start: 'top 70%', toggleActions: 'play none none reverse' }
-        });
+
+        gsap.fromTo(journeyPath,
+          { strokeDashoffset: len },
+          {
+            strokeDashoffset: 0,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.about-journey-section',
+              start: 'top 65%',
+              end: 'bottom 65%',
+              scrub: 0.3,
+              onUpdate: (self) => {
+                const p = self.progress;
+                const doctorEl = pageRef.current?.querySelector('.about-journey-doctor') as HTMLElement | null;
+                const visualEl = pageRef.current?.querySelector('.about-journey-visual') as HTMLElement | null;
+                const cardEls = pageRef.current?.querySelectorAll('.about-journey-card');
+                const dotEls = pageRef.current?.querySelectorAll('.about-journey-dot');
+
+                if (doctorEl && visualEl && cardEls && cardEls.length > 0) {
+                  const visualRect = visualEl.getBoundingClientRect();
+                  const firstCard = cardEls[0] as HTMLElement;
+                  const lastCard = cardEls[cardEls.length - 1] as HTMLElement;
+
+                  const startY = (firstCard.getBoundingClientRect().top + firstCard.getBoundingClientRect().height / 2) - visualRect.top;
+                  const endY = (lastCard.getBoundingClientRect().top + lastCard.getBoundingClientRect().height / 2) - visualRect.top;
+
+                  const currentY = startY + p * (endY - startY);
+                  gsap.set(doctorEl, { y: currentY, opacity: 1 });
+
+                  // Dynamic rotation tilt
+                  const bounce = Math.sin(p * Math.PI * 4) * 2;
+                  gsap.set(doctorEl, { rotation: bounce * 3 });
+
+                  // Highlight corresponding dot as doctor passes by
+                  cardEls.forEach((card, idx) => {
+                    const cardCenterY = (card.getBoundingClientRect().top + card.getBoundingClientRect().height / 2) - visualRect.top;
+                    const dot = dotEls ? (dotEls[idx] as HTMLElement | null) : null;
+                    if (Math.abs(currentY - cardCenterY) < 35) {
+                      if (dot) dot.classList.add('is-active');
+                    } else {
+                      if (dot) dot.classList.remove('is-active');
+                    }
+                  });
+                }
+              }
+            }
+          }
+        );
       }
 
       /* Approach Image Zoom */
@@ -426,12 +471,41 @@ export const AboutPage: React.FC = () => {
         x: 40, y: 30, scale: 0.95, duration: 28, repeat: -1, yoyo: true, ease: 'sine.inOut'
       });
 
-      // Master Entry Timeline for Industries Section (starts at 75% viewport)
+      // Circular Orbital Starting Positions for 6 cards (matching UnmatchedTrustSection)
+      const isMobile = window.innerWidth < 768;
+      const xOrbit = isMobile ? 200 : 420;
+      const yOrbit = isMobile ? 220 : 320;
+
+      const initialConfigs = [
+        { x: -xOrbit, y: -yOrbit, rotation: -140 }, // Card 0 Top-Left Orbit
+        { x: 0, y: -yOrbit * 1.25, rotation: 160 },   // Card 1 Top-Center Orbit
+        { x: xOrbit, y: -yOrbit, rotation: -130 },  // Card 2 Top-Right Orbit
+        { x: -xOrbit, y: yOrbit, rotation: 150 },   // Card 3 Bottom-Left Orbit
+        { x: 0, y: yOrbit * 1.25, rotation: -160 },  // Card 4 Bottom-Center Orbit
+        { x: xOrbit, y: yOrbit, rotation: 140 }     // Card 5 Bottom-Right Orbit
+      ];
+
+      // Set initial orbital state for all 6 cards
+      const sectorCards = gsap.utils.toArray<HTMLElement>('.ind-card');
+      sectorCards.forEach((card, idx) => {
+        const config = initialConfigs[idx] || { x: 0, y: 150, rotation: 45 };
+        gsap.set(card, {
+          x: config.x,
+          y: config.y,
+          rotation: config.rotation,
+          scale: 0.68,
+          opacity: 0,
+          filter: 'blur(8px)',
+          transformOrigin: '50% 50%'
+        });
+      });
+
+      // Master Orbital Assembly Timeline on ScrollTrigger
       const indTl = gsap.timeline({
         scrollTrigger: {
           trigger: '#industries-section',
-          start: 'top 75%',
-          toggleActions: 'play none none reverse'
+          start: 'top 78%',
+          toggleActions: 'play none none none'
         }
       });
 
@@ -449,11 +523,31 @@ export const AboutPage: React.FC = () => {
         { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
         '-=0.4'
       )
-      .fromTo('.ind-card',
-        { opacity: 0, y: 80, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, stagger: 0.14, duration: 0.95, ease: 'power4.out' },
-        '-=0.3'
-      );
+      .to(sectorCards, {
+        x: 0,
+        y: 0,
+        rotation: 0,
+        scale: 1,
+        opacity: 1,
+        filter: 'blur(0px)',
+        duration: 2.1,
+        stagger: 0.22,
+        ease: 'power3.out',
+        onComplete: () => {
+          // Initiate Continuous Subtle Idle Floating after entrance finishes
+          sectorCards.forEach((card, index) => {
+            gsap.to(card, {
+              y: index % 2 === 0 ? -6 : 6,
+              rotation: index % 2 === 0 ? 0.8 : -0.8,
+              duration: 3.2 + index * 0.4,
+              repeat: -1,
+              yoyo: true,
+              ease: 'sine.inOut',
+              delay: index * 0.15
+            });
+          });
+        }
+      }, '-=0.3');
 
       // Idle gentle floating motion for icons
       gsap.to('.ind-card-icon', {
@@ -463,20 +557,6 @@ export const AboutPage: React.FC = () => {
         yoyo: true,
         ease: 'sine.inOut',
         stagger: 0.2
-      });
-
-      // Parallax scroll effect for icons relative to cards
-      gsap.utils.toArray<HTMLElement>('.ind-card-icon-wrap').forEach((iconWrap) => {
-        gsap.to(iconWrap, {
-          yPercent: -12,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: iconWrap,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true
-          }
-        });
       });
 
       /* Partnership Sticky Scroll Storytelling */
@@ -522,13 +602,68 @@ export const AboutPage: React.FC = () => {
 
   /* ─── Industries Data ─── */
   const industries = [
-    { icon: 'fas fa-house-medical', title: 'Nursing Homes', desc: 'Supporting elderly residents with qualified nurses and healthcare professionals who promote dignity, comfort, and clinical excellence.', color: 'linear-gradient(135deg, #1C6F6B, #14524F)' },
-    { icon: 'fas fa-home', title: 'Residential Care Homes', desc: 'Providing experienced carers and support workers who help residents maintain independence while receiving compassionate daily care.', color: 'linear-gradient(135deg, #2F4F56, #1a3a40)' },
-    { icon: 'fas fa-brain', title: 'Mental Health Services', desc: 'Supplying professionals experienced in supporting individuals with diverse mental health needs across secure units and community services.', color: 'linear-gradient(135deg, #6366f1, #4338ca)' },
-    { icon: 'fas fa-people-roof', title: 'Supported Living', desc: 'Helping people live independently through skilled support workers focused on personalised care and empowerment.', color: 'linear-gradient(135deg, #0891b2, #0e7490)' },
-    { icon: 'fas fa-hospital', title: 'Private Healthcare', desc: 'Partnering with private hospitals and specialist clinics to provide dependable temporary and long-term healthcare professionals.', color: 'linear-gradient(135deg, #059669, #047857)' },
-    { icon: 'fas fa-hand-holding-heart', title: 'Hospice & Palliative Care', desc: 'Supporting specialist teams delivering compassionate end-of-life care with dignity, sensitivity, and professionalism.', color: 'linear-gradient(135deg, #dc2626, #b91c1c)' },
+    { 
+      icon: 'fas fa-house-medical', 
+      title: 'Nursing Homes', 
+      desc: 'Supporting elderly residents with qualified nurses and healthcare professionals who promote dignity, comfort, and clinical excellence.',
+      image: '/sector_nursing_homes.jpg',
+      outfitTag: 'Teal Scrubs • Clinical Care',
+      outfitColor: '#0D9488',
+      objectPosition: 'center 15%',
+      color: 'linear-gradient(135deg, #1C6F6B, #0D9488)' 
+    },
+    { 
+      icon: 'fas fa-home', 
+      title: 'Residential Care Homes', 
+      desc: 'Providing experienced carers and support workers who help residents maintain independence while receiving compassionate daily care.',
+      image: '/sector_residential_care.jpg',
+      outfitTag: 'Royal Blue • Daily Support',
+      outfitColor: '#2563EB',
+      objectPosition: 'center 15%',
+      color: 'linear-gradient(135deg, #1E40AF, #2563EB)' 
+    },
+    { 
+      icon: 'fas fa-brain', 
+      title: 'Mental Health Services', 
+      desc: 'Supplying professionals experienced in supporting individuals with diverse mental health needs across secure units and community services.',
+      image: '/sector_mental_health.jpg',
+      outfitTag: 'Dark Burgundy • Specialist Care',
+      outfitColor: '#BE123C',
+      objectPosition: 'center 10%',
+      color: 'linear-gradient(135deg, #881337, #BE123C)' 
+    },
+    { 
+      icon: 'fas fa-people-roof', 
+      title: 'Supported Living', 
+      desc: 'Helping people live independently through skilled support workers focused on personalised care and empowerment.',
+      image: '/sector_supported_living.jpg',
+      outfitTag: 'Mustard Gold • Empowerment',
+      outfitColor: '#D97706',
+      objectPosition: 'center 15%',
+      color: 'linear-gradient(135deg, #B45309, #D97706)' 
+    },
+    { 
+      icon: 'fas fa-hospital', 
+      title: 'Private Healthcare', 
+      desc: 'Partnering with private hospitals and specialist clinics to provide dependable temporary and long-term healthcare professionals.',
+      image: '/sector_private_healthcare.jpg',
+      outfitTag: 'Navy & White • Specialist Staff',
+      outfitColor: '#059669',
+      objectPosition: 'center 10%',
+      color: 'linear-gradient(135deg, #0F766E, #059669)' 
+    },
+    { 
+      icon: 'fas fa-hand-holding-heart', 
+      title: 'Hospice & Palliative Care', 
+      desc: 'Supporting specialist teams delivering compassionate end-of-life care with dignity, sensitivity, and professionalism.',
+      image: '/sector_hospice_palliative.jpg',
+      outfitTag: 'Soft Lavender • End-of-Life',
+      outfitColor: '#7C3AED',
+      objectPosition: 'center 15%',
+      color: 'linear-gradient(135deg, #6B21A8, #7C3AED)' 
+    },
   ];
+
 
   return (
     <div ref={pageRef} className="about-page">
@@ -542,9 +677,7 @@ export const AboutPage: React.FC = () => {
       {/* HERO SECTION — GSAP Timeline Animated       */}
       {/* ═══════════════════════════════════════════ */}
       <section className="about-hero-section">
-        <div className="about-hero-three-bg">
-          <canvas ref={canvasRef} className="about-three-canvas" />
-        </div>
+        <HeroBrandThreeBg />
         <div className="about-hero-overlay"></div>
 
         <div className="container about-hero-grid">
@@ -646,6 +779,14 @@ export const AboutPage: React.FC = () => {
               <div className="about-journey-dot" style={{ top: '32%' }}><i className="fas fa-users"></i></div>
               <div className="about-journey-dot" style={{ top: '62%' }}><i className="fas fa-chart-line"></i></div>
               <div className="about-journey-dot" style={{ top: '92%' }}><i className="fas fa-trophy"></i></div>
+
+              {/* Traveling Doctor Icon */}
+              <div className="about-journey-doctor">
+                <div className="about-doctor-pulse"></div>
+                <div className="about-doctor-avatar">
+                  <img src="/doctor_journey_icon.png" alt="Doctor Guide" />
+                </div>
+              </div>
             </div>
             <div className="about-journey-content">
               <div className="about-journey-card about-reveal">
@@ -732,14 +873,41 @@ export const AboutPage: React.FC = () => {
           <div className="about-industries-grid">
             {industries.map((ind, i) => (
               <div key={i} className="about-industry-card ind-card">
-                <div className="ind-card-icon-wrap" style={{ background: ind.color }}>
-                  <i className={`${ind.icon} ind-card-icon`}></i>
+                {/* Sector Image Banner */}
+                <div className="ind-card-img-wrap">
+                  <img 
+                    src={ind.image} 
+                    alt={ind.title} 
+                    className="ind-card-img" 
+                    style={{ objectPosition: ind.objectPosition || 'center top' }}
+                    loading="lazy" 
+                  />
+                  <div className="ind-card-img-overlay"></div>
+                  
+                  {/* Distinct Uniform / Dress Tag Badge */}
+                  <div className="ind-card-tag">
+                    <span 
+                      className="ind-tag-dot" 
+                      style={{ backgroundColor: ind.outfitColor, boxShadow: `0 0 10px ${ind.outfitColor}` }}
+                    ></span>
+                    <span>{ind.outfitTag}</span>
+                  </div>
+
+                  {/* Floating Glass Icon Badge */}
+                  <div className="ind-card-icon-wrap" style={{ background: ind.color }}>
+                    <i className={`${ind.icon} ind-card-icon`}></i>
+                  </div>
                 </div>
-                <h4 className="ind-card-title">{ind.title}</h4>
-                <p className="ind-card-desc">{ind.desc}</p>
-                <div className="ind-card-link">
-                  <span>Explore Sector</span>
-                  <i className="fas fa-arrow-right ind-card-arrow"></i>
+
+                {/* Card Content Body */}
+                <div className="ind-card-body">
+                  <h4 className="ind-card-title">{ind.title}</h4>
+                  <p className="ind-card-desc">{ind.desc}</p>
+                  
+                  <Link to="/services" className="ind-card-link">
+                    <span>Explore Sector</span>
+                    <i className="fas fa-arrow-right ind-card-arrow"></i>
+                  </Link>
                 </div>
               </div>
             ))}

@@ -4,6 +4,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import * as THREE from 'three';
+import { WorkforceSpectrumSection } from '../components/WorkforceSpectrumSection';
+import { HeroBrandThreeBg } from '../components/HeroBrandThreeBg';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -309,12 +311,57 @@ export const ServicesPage: React.FC = () => {
         }
       );
 
-      /* MATCHING PROCESS VERTICAL LINE GROW */
+      /* MATCHING PROCESS VERTICAL LINE GROW & DOCTOR MOVEMENT THROUGH DIV NUMBERS */
       gsap.fromTo('.srv-process-line-progress',
         { height: '0%' },
         {
           height: '100%', ease: 'none',
-          scrollTrigger: { trigger: '.srv-process-section', start: 'top 65%', end: 'bottom 75%', scrub: true }
+          scrollTrigger: {
+            trigger: '.srv-process-section',
+            start: 'top 65%',
+            end: 'bottom 65%',
+            scrub: 0.3,
+            onUpdate: (self) => {
+              const p = self.progress;
+              const doctorEl = document.querySelector('.srv-process-doctor') as HTMLElement | null;
+              const timelineEl = document.querySelector('.srv-process-timeline') as HTMLElement | null;
+              const stepEls = document.querySelectorAll('.srv-process-step');
+
+              if (doctorEl && timelineEl && stepEls.length > 0) {
+                const timelineRect = timelineEl.getBoundingClientRect();
+                const firstStep = stepEls[0] as HTMLElement;
+                const lastStep = stepEls[stepEls.length - 1] as HTMLElement;
+
+                const firstCircle = firstStep.querySelector('.srv-step-number') as HTMLElement | null;
+                const lastCircle = lastStep.querySelector('.srv-step-number') as HTMLElement | null;
+
+                if (firstCircle && lastCircle) {
+                  const startY = (firstCircle.getBoundingClientRect().top + firstCircle.getBoundingClientRect().height / 2) - timelineRect.top;
+                  const endY = (lastCircle.getBoundingClientRect().top + lastCircle.getBoundingClientRect().height / 2) - timelineRect.top;
+
+                  const currentY = startY + p * (endY - startY);
+                  gsap.set(doctorEl, { y: currentY, opacity: 1 });
+
+                  // Dynamic rotation tilt
+                  const bounce = Math.sin(p * Math.PI * 4) * 2;
+                  gsap.set(doctorEl, { rotation: bounce * 3 });
+
+                  // Activate step number circle when doctor arrives at its Y center
+                  stepEls.forEach((step) => {
+                    const circle = step.querySelector('.srv-step-number') as HTMLElement | null;
+                    if (circle) {
+                      const circleY = (circle.getBoundingClientRect().top + circle.getBoundingClientRect().height / 2) - timelineRect.top;
+                      if (Math.abs(currentY - circleY) < 35) {
+                        circle.classList.add('is-active');
+                      } else {
+                        circle.classList.remove('is-active');
+                      }
+                    }
+                  });
+                }
+              }
+            }
+          }
         }
       );
 
@@ -389,9 +436,7 @@ export const ServicesPage: React.FC = () => {
       {/* SECTION 1 — HERO BANNER                    */}
       {/* ═══════════════════════════════════════════ */}
       <section className="srv-hero-section">
-        <div className="srv-hero-three-bg">
-          <canvas ref={heroCanvasRef} className="about-three-canvas" />
-        </div>
+        <HeroBrandThreeBg />
         <div className="about-hero-overlay"></div>
 
         <div className="container srv-hero-grid">
@@ -467,56 +512,9 @@ export const ServicesPage: React.FC = () => {
       </section>
 
       {/* ═══════════════════════════════════════════ */}
-      {/* SECTION 3 — STAFFING OVERVIEW TIMELINE     */}
+      {/* SECTION 3 — WORKFORCE SPECTRUM (INTERACTIVE) */}
       {/* ═══════════════════════════════════════════ */}
-      <section className="srv-overview-section about-reveal">
-        <div className="container">
-          <div className="about-section-header text-center">
-            <span className="about-section-badge"><i className="fas fa-layer-group"></i> WORKFORCE SPECTRUM</span>
-            <h2>Flexible Solutions Across <span className="about-highlight">Every Care Setting</span></h2>
-            <p className="about-section-sub">Comprehensive healthcare staffing models structured for seamless integration.</p>
-          </div>
-
-          <div className="srv-overview-timeline">
-            <svg className="srv-timeline-svg" viewBox="0 0 4 600" preserveAspectRatio="none">
-              <path className="srv-timeline-svg-path" d="M 2 0 L 2 600" stroke="rgba(28,111,107,0.4)" strokeWidth="4" fill="none" />
-            </svg>
-
-            <div className="srv-timeline-block srv-block-left about-reveal">
-              <div className="srv-block-icon" style={{ background: 'linear-gradient(135deg, #1C6F6B, #14524F)' }}>
-                <i className="fas fa-calendar-check"></i>
-              </div>
-              <div className="srv-block-card">
-                <span className="srv-block-tag">MODEL 01</span>
-                <h3>Planned Workforce Support</h3>
-                <p>Structured long-term and block booking solutions to manage maternity leaves, planned expansions, and ongoing workforce stability.</p>
-              </div>
-            </div>
-
-            <div className="srv-timeline-block srv-block-right about-reveal">
-              <div className="srv-block-icon" style={{ background: 'linear-gradient(135deg, #0891b2, #0e7490)' }}>
-                <i className="fas fa-bolt"></i>
-              </div>
-              <div className="srv-block-card">
-                <span className="srv-block-tag">MODEL 02</span>
-                <h3>Urgent Sickness &amp; Emergency Cover</h3>
-                <p>Rapid deployment of fully vetted nurses and carers within hours for unexpected staff absences and short-notice shifts.</p>
-              </div>
-            </div>
-
-            <div className="srv-timeline-block srv-block-left about-reveal">
-              <div className="srv-block-icon" style={{ background: 'linear-gradient(135deg, #6366f1, #4338ca)' }}>
-                <i className="fas fa-building-user"></i>
-              </div>
-              <div className="srv-block-card">
-                <span className="srv-block-tag">MODEL 03</span>
-                <h3>Multi-Site &amp; Contract Staffing</h3>
-                <p>Custom staffing master agreements across regional care networks, private hospitals, and residential groups.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <WorkforceSpectrumSection />
 
       {/* ═══════════════════════════════════════════ */}
       {/* SECTION 4 — HEALTHCARE PROFESSIONALS       */}
@@ -663,7 +661,7 @@ export const ServicesPage: React.FC = () => {
       {/* ═══════════════════════════════════════════ */}
       {/* SECTION 7 — STAFF MATCHING PROCESS          */}
       {/* ═══════════════════════════════════════════ */}
-      <section className="srv-process-section about-reveal">
+      <section className="srv-process-section about-reveal" id="staff-matching-process">
         <div className="container">
           <div className="about-section-header text-center">
             <span className="about-section-badge"><i className="fas fa-route"></i> STEP-BY-STEP PROCESS</span>
@@ -674,6 +672,14 @@ export const ServicesPage: React.FC = () => {
           <div className="srv-process-timeline">
             <div className="srv-process-line-bg">
               <div className="srv-process-line-progress"></div>
+            </div>
+
+            {/* Traveling Doctor Icon overlay along timeline */}
+            <div className="srv-process-doctor">
+              <div className="srv-doctor-pulse"></div>
+              <div className="srv-doctor-avatar">
+                <img src="/doctor_journey_icon.png" alt="Doctor Guide" />
+              </div>
             </div>
 
             <div className="srv-process-step about-reveal">

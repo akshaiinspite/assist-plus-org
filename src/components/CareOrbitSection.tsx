@@ -20,7 +20,8 @@ interface OrbitStep {
   glowColor: string;
   iconClass: string;
   positionClass: string;
-  illustration: React.ReactNode;
+  imageSrc: string;
+  illustration?: React.ReactNode;
 }
 
 export const CareOrbitSection: React.FC = () => {
@@ -49,17 +50,7 @@ export const CareOrbitSection: React.FC = () => {
       glowColor: '#0EA5E9',
       iconClass: 'fas fa-headset',
       positionClass: 'pos-top',
-      illustration: (
-        <svg viewBox="0 0 120 100" fill="none" className="active-card-svg">
-          <circle cx="60" cy="50" r="45" fill="#0EA5E9" opacity="0.12" />
-          <path d="M 40 50 C 40 32, 80 32, 80 50 V 68" stroke="#0EA5E9" strokeWidth="4" strokeLinecap="round" fill="none" />
-          <rect x="32" y="46" width="16" height="24" rx="8" fill="#0EA5E9" />
-          <rect x="72" y="46" width="16" height="24" rx="8" fill="#38BDF8" />
-          <path d="M 48 68 C 54 76, 66 76, 72 68" stroke="#38BDF8" strokeWidth="3.5" strokeLinecap="round" fill="none" />
-          <circle cx="85" cy="28" r="10" fill="#F59E0B" />
-          <path d="M 81 28 L 84 31 L 89 25" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" />
-        </svg>
-      )
+      imageSrc: '/journey_step1_consultation.png'
     },
     {
       id: 1,
@@ -74,16 +65,7 @@ export const CareOrbitSection: React.FC = () => {
       glowColor: '#84CC16',
       iconClass: 'fas fa-notes-medical',
       positionClass: 'pos-right',
-      illustration: (
-        <svg viewBox="0 0 120 100" fill="none" className="active-card-svg">
-          <circle cx="60" cy="50" r="45" fill="#84CC16" opacity="0.12" />
-          <rect x="38" y="22" width="44" height="60" rx="8" stroke="#65A30D" strokeWidth="4" fill="#FFFFFF" />
-          <rect x="50" y="16" width="20" height="10" rx="4" fill="#65A30D" />
-          <line x1="48" y1="38" x2="72" y2="38" stroke="#0EA5E9" strokeWidth="3.5" strokeLinecap="round" />
-          <line x1="48" y1="48" x2="66" y2="48" stroke="#38BDF8" strokeWidth="3.5" strokeLinecap="round" />
-          <path d="M 48 62 L 55 69 L 72 52" stroke="#84CC16" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        </svg>
-      )
+      imageSrc: '/journey_step2_assessment.png'
     },
     {
       id: 2,
@@ -98,14 +80,7 @@ export const CareOrbitSection: React.FC = () => {
       glowColor: '#8B5CF6',
       iconClass: 'fas fa-sliders-h',
       positionClass: 'pos-bottom',
-      illustration: (
-        <svg viewBox="0 0 120 100" fill="none" className="active-card-svg">
-          <circle cx="60" cy="50" r="45" fill="#8B5CF6" opacity="0.12" />
-          <path d="M 34 24 H 74 L 86 36 V 78 H 34 Z" stroke="#8B5CF6" strokeWidth="4" fill="#FFFFFF" strokeLinejoin="round" />
-          <path d="M 60 44 C 54 36, 42 44, 50 54 L 60 64 L 70 54 C 78 44, 66 36, 60 44 Z" fill="#F43F5E" />
-          <line x1="44" y1="34" x2="64" y2="34" stroke="#8B5CF6" strokeWidth="3.5" strokeLinecap="round" />
-        </svg>
-      )
+      imageSrc: '/journey_step3_plan.png'
     },
     {
       id: 3,
@@ -120,14 +95,7 @@ export const CareOrbitSection: React.FC = () => {
       glowColor: '#F43F5E',
       iconClass: 'fas fa-user-check',
       positionClass: 'pos-left',
-      illustration: (
-        <svg viewBox="0 0 120 100" fill="none" className="active-card-svg">
-          <circle cx="60" cy="50" r="45" fill="#F43F5E" opacity="0.12" />
-          <circle cx="42" cy="38" r="14" fill="#F43F5E" />
-          <path d="M 24 78 C 24 58, 60 58, 60 78 Z" fill="#F43F5E" opacity="0.85" />
-          <path d="M 58 54 L 66 44 L 74 62 L 84 32 L 92 68 L 100 54 H 112" stroke="#10B981" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        </svg>
-      )
+      imageSrc: '/journey_step4_begins.png'
     }
   ];
 
@@ -301,8 +269,13 @@ export const CareOrbitSection: React.FC = () => {
               </div>
 
               <div className="active-card-content-grid">
-                <div className="active-card-illustration">
-                  {currentStep.illustration}
+                <div className="active-card-image-container">
+                  <div className="active-card-img-wrapper">
+                    <img src={currentStep.imageSrc} alt={currentStep.title} className="active-card-img" />
+                    <div className="active-card-step-tag" style={{ background: currentStep.nodeBg }}>
+                      <i className={`${currentStep.iconClass} me-1`}></i> Step {currentStep.stepNum}
+                    </div>
+                  </div>
                 </div>
 
                 <div className="active-card-text">

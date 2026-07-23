@@ -23,9 +23,9 @@ export const Footer: React.FC = () => {
             <h4>Quick Links</h4>
             <ul>
               <li><Link to="/">Home</Link></li>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#services">Our Services</a></li>
-              <li><a href="#careers">Careers / Join Our Team</a></li>
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/services">Our Services</Link></li>
+              <li><Link to="/quote">Careers / Join Our Team</Link></li>
               <li><Link to="/quote">Contact Us &amp; Pricing</Link></li>
             </ul>
           </div>
@@ -33,12 +33,12 @@ export const Footer: React.FC = () => {
           <div className="footer-links">
             <h4>Staffing Solutions</h4>
             <ul>
-              <li><a href="#services">Registered Nurses (NHS)</a></li>
-              <li><a href="#services">Mental Health Nurses</a></li>
-              <li><a href="#services">Healthcare Assistants (HCAs)</a></li>
-              <li><a href="#services">Support Workers</a></li>
-              <li><a href="#services">Live in Carers</a></li>
-              <li><a href="#services">24/7 Emergency Cover</a></li>
+              <li><Link to="/services">Registered Nurses (NHS)</Link></li>
+              <li><Link to="/services">Mental Health Nurses</Link></li>
+              <li><Link to="/services">Healthcare Assistants (HCAs)</Link></li>
+              <li><Link to="/services">Support Workers</Link></li>
+              <li><Link to="/services">Live in Carers</Link></li>
+              <li><Link to="/quote">24/7 Emergency Cover</Link></li>
             </ul>
           </div>
 

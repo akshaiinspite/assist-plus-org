@@ -6,6 +6,7 @@ import { ThreeOrbitStage } from '../components/ThreeOrbitStage';
 import { MissionVisionSection } from '../components/MissionVisionSection';
 import { ServicesEcosystemSection } from '../components/ServicesEcosystemSection';
 import { CareOrbitSection } from '../components/CareOrbitSection';
+import { UnmatchedTrustSection } from '../components/UnmatchedTrustSection';
 import { TestimonialOrbitSection } from '../components/TestimonialOrbitSection';
 
 if (typeof window !== 'undefined') {
@@ -14,6 +15,32 @@ if (typeof window !== 'undefined') {
 
 export const HomePage: React.FC = () => {
   const pageRef = useRef<HTMLDivElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [videoReady, setVideoReady] = React.useState(false);
+
+  // Wait for video to buffer its first frame, then show it — no blank screen flash
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleReady = () => {
+      setVideoReady(true);
+    };
+
+    // If the video already has enough data (e.g. cached), fire immediately
+    if (video.readyState >= 3) {
+      handleReady();
+    } else {
+      video.addEventListener('canplay', handleReady);
+    }
+
+    video.muted = true;
+    video.play().catch(() => {});
+
+    return () => {
+      video.removeEventListener('canplay', handleReady);
+    };
+  }, []);
 
   useEffect(() => {
     if (!pageRef.current) return;
@@ -195,15 +222,19 @@ export const HomePage: React.FC = () => {
     <div ref={pageRef} className="home-page">
       {/* HERO SECTION */}
       <section className="hero" id="home">
-        {/* Full-Cover Background Video */}
+        {/* Full-Cover Background Video — hidden until first frame is buffered */}
         <video
+          ref={videoRef}
           className="hero-video-bg"
+          style={{ opacity: videoReady ? 1 : 0, transition: 'opacity 0.4s ease' }}
           autoPlay
           loop
           muted
           playsInline
-          src="/Nurse_holding_hands_elderly_woman_202607211104.mp4"
-        />
+          preload="auto"
+        >
+          <source src="/Nurse_holding_hands_elderly_woman_202607211104.mp4" type="video/mp4" />
+        </video>
 
         {/* Dark Gradient Overlay for High Contrast & Professional Aesthetics */}
         <div className="hero-video-overlay"></div>
@@ -465,143 +496,8 @@ export const HomePage: React.FC = () => {
       {/* INTERACTIVE HEALTHCARE CARE ORBIT SECTION */}
       <CareOrbitSection />
 
-      {/* MODERN UNMATCHED TRUST & METRICS SECTION */}
-      <section className="trust-section" id="trust">
-        <div className="trust-bg-effects">
-          <div className="trust-blob trust-blob-1"></div>
-          <div className="trust-blob trust-blob-2"></div>
-        </div>
-
-        <div className="container relative-z">
-          {/* Header */}
-          <div className="whoweare-intro-header text-center reveal" style={{ marginBottom: '48px' }}>
-            <span className="about-badge-logo">
-              <i className="fas fa-award"></i> UNMATCHED TRUST &amp; EXCELLENCE
-            </span>
-            <h2 className="about-title-logo">Driven by 100% Quality &amp; Compassion</h2>
-            <p className="about-lead-styled">
-              Our unwavering dedication to clinical excellence, client satisfaction, and compassionate care defines every placement across the UK &amp; Ireland.
-            </p>
-          </div>
-
-          <div className="trust-cards-grid reveal">
-            {/* Metric Card 1: Positive Reviews */}
-            <div className="trust-card trust-card-reviews">
-              <div className="trust-card-top">
-                <div className="trust-icon-box icon-reviews">
-                  <svg viewBox="0 0 60 60" fill="none" className="trust-svg-icon animated-star-svg">
-                    <circle cx="30" cy="30" r="26" fill="url(#reviewsGrad)" opacity="0.15" />
-                    <circle cx="30" cy="30" r="22" stroke="#F59E0B" strokeWidth="1.5" strokeDasharray="5 3" className="rotating-outer-ring" />
-                    <path d="M 30 14 L 34 23 L 44 24 L 36 31 L 39 41 L 30 36 L 21 41 L 24 31 L 16 24 L 26 23 Z" fill="url(#starGoldGrad)" filter="drop-shadow(0 4px 10px rgba(245,158,11,0.4))" />
-                    <defs>
-                      <linearGradient id="reviewsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#F59E0B" />
-                        <stop offset="100%" stopColor="#38BDF8" />
-                      </linearGradient>
-                      <linearGradient id="starGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#FFE082" />
-                        <stop offset="50%" stopColor="#F59E0B" />
-                        <stop offset="100%" stopColor="#D97706" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </div>
-                <span className="trust-verified-pill pill-gold">
-                  <i className="fas fa-star"></i> 5-Star Rated
-                </span>
-              </div>
-
-              <div className="trust-card-body">
-                <div className="trust-value-wrap">
-                  <span className="trust-value val-gold">100%</span>
-                  <span className="trust-check-badge"><i className="fas fa-check-circle"></i></span>
-                </div>
-                <h3 className="trust-title">Positive Reviews</h3>
-                <p className="trust-desc">From clients and families across the UK &amp; Ireland.</p>
-              </div>
-              <div className="trust-card-footer-line line-gold"></div>
-            </div>
-
-            {/* Metric Card 2: Satisfied Clients */}
-            <div className="trust-card trust-card-satisfied">
-              <div className="trust-card-top">
-                <div className="trust-icon-box icon-satisfied">
-                  <svg viewBox="0 0 60 60" fill="none" className="trust-svg-icon animated-shield-svg">
-                    <circle cx="30" cy="30" r="26" fill="url(#satisfiedGrad)" opacity="0.15" />
-                    <path d="M 30 14 C 38 14, 44 17, 44 24 C 44 34, 35 41, 30 46 C 25 41, 16 34, 16 24 C 16 17, 22 14, 30 14 Z" fill="url(#shieldTealGrad)" stroke="#10B981" strokeWidth="2" filter="drop-shadow(0 4px 10px rgba(16,185,129,0.3))" />
-                    <path d="M 24 28 L 28 32 L 36 24" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <defs>
-                      <linearGradient id="satisfiedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#10B981" />
-                        <stop offset="100%" stopColor="#0D6EFD" />
-                      </linearGradient>
-                      <linearGradient id="shieldTealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#A7F3D0" />
-                        <stop offset="100%" stopColor="#059669" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </div>
-                <span className="trust-verified-pill pill-teal">
-                  <i className="fas fa-shield-alt"></i> Guaranteed
-                </span>
-              </div>
-
-              <div className="trust-card-body">
-                <div className="trust-value-wrap">
-                  <span className="trust-value val-teal">100%</span>
-                  <span className="trust-check-badge"><i className="fas fa-check-circle"></i></span>
-                </div>
-                <h3 className="trust-title">Satisfied Clients</h3>
-                <p className="trust-desc">Consistently exceeding expectations through reliable, high-standard healthcare staffing.</p>
-              </div>
-              <div className="trust-card-footer-line line-teal"></div>
-            </div>
-
-            {/* Metric Card 3: Care Commitment */}
-            <div className="trust-card trust-card-commitment">
-              <div className="trust-card-top">
-                <div className="trust-icon-box icon-commitment">
-                  <svg viewBox="0 0 60 60" fill="none" className="trust-svg-icon animated-medal-svg">
-                    <circle cx="30" cy="30" r="26" fill="url(#commitmentGrad)" opacity="0.15" />
-                    <path d="M 22 36 L 19 50 L 30 44 L 41 50 L 38 36" fill="url(#ribbonGrad)" />
-                    <circle cx="30" cy="24" r="14" fill="url(#medalGoldGrad)" stroke="#0D6EFD" strokeWidth="2.5" filter="drop-shadow(0 4px 8px rgba(13,110,253,0.3))" />
-                    {/* Beating Heart Icon */}
-                    <path d="M 30 20 C 28 17, 24 17, 24 21 C 24 26, 30 29, 30 29 C 30 29, 36 26, 36 21 C 36 17, 32 17, 30 20 Z" fill="#ffffff" className="beating-heart-path" />
-                    <defs>
-                      <linearGradient id="commitmentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#0D6EFD" />
-                        <stop offset="100%" stopColor="#38BDF8" />
-                      </linearGradient>
-                      <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#3B82F6" />
-                        <stop offset="100%" stopColor="#1D4ED8" />
-                      </linearGradient>
-                      <linearGradient id="medalGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#93C5FD" />
-                        <stop offset="100%" stopColor="#2563EB" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </div>
-                <span className="trust-verified-pill pill-blue">
-                  <i className="fas fa-award"></i> Est. 2024
-                </span>
-              </div>
-
-              <div className="trust-card-body">
-                <div className="trust-value-wrap">
-                  <span className="trust-value val-blue">100%</span>
-                  <span className="trust-check-badge"><i className="fas fa-check-circle"></i></span>
-                </div>
-                <h3 className="trust-title">Care Commitment</h3>
-                <p className="trust-desc">A decade of healthcare excellence and dedication.</p>
-              </div>
-              <div className="trust-card-footer-line line-blue"></div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* MODERN UNMATCHED TRUST & METRICS SECTION WITH GSAP ORBIT ASSEMBLY & THREE.JS PARTICLES */}
+      <UnmatchedTrustSection />
 
       {/* INTERACTIVE TESTIMONIAL ORBIT SECTION */}
       <TestimonialOrbitSection />
