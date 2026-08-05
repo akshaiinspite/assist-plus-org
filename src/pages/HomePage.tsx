@@ -249,7 +249,7 @@ export const HomePage: React.FC = () => {
             {/* HERO HEADING BRAND IMAGE */}
             <div className="hero-heading-box">
               <img
-                src="/hero_brand_heading.png"
+                src="/ChatGPT_Image_Aug_5__2026__05_02_02_PM-removebg-preview.png"
                 alt="Assist Plus Care — Building Teams to Care"
                 className="hero-heading-img"
               />
