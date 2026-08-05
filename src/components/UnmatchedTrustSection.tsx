@@ -115,7 +115,7 @@ export const UnmatchedTrustSection: React.FC = () => {
       valueSuffix: '%',
       valueColorClass: 'val-blue',
       title: 'Care Commitment',
-      description: 'A decade of healthcare excellence and dedication.',
+      description: 'Unwavering commitment to healthcare excellence, safety, and client-focused care.',
       iconBoxClass: 'icon-commitment',
       footerLineClass: 'line-blue',
       svgIcon: (

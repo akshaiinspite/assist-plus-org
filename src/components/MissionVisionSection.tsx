@@ -146,7 +146,7 @@ export const MissionVisionSection: React.FC = () => {
           </span>
           <h2 className="mv-title">Building Care, Shaping Vision</h2>
           <p className="mv-subtitle">
-            Driven by compassion today, pioneering seamless healthcare staffing and continuity across the UK &amp; Ireland for tomorrow.
+            Driven by compassion, delivering seamless healthcare staffing today and ensuring continuity of care for tomorrow across the UK &amp; Ireland.
           </p>
         </div>
 

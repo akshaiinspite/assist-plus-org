@@ -140,41 +140,6 @@ export const CareOrbitSection: React.FC = () => {
           }
         );
       }
-
-      // Infinite slow rotation of the entire orbit wheel (ring + nodes)
-      if (orbitSpinRef.current) {
-        gsap.to(orbitSpinRef.current, {
-          rotation: 360,
-          duration: 30,
-          repeat: -1,
-          ease: 'none',
-          transformOrigin: '50% 50%'
-        });
-      }
-
-      // Counter-rotate center hub so text stays upright
-      if (centerHubRef.current) {
-        gsap.to(centerHubRef.current, {
-          rotation: -360,
-          duration: 30,
-          repeat: -1,
-          ease: 'none',
-          transformOrigin: '50% 50%'
-        });
-      }
-
-      // Counter-rotate each node button so icons stay upright
-      nodeRefs.current.forEach((node) => {
-        if (node) {
-          gsap.to(node, {
-            rotation: -360,
-            duration: 30,
-            repeat: -1,
-            ease: 'none',
-            transformOrigin: '50% 50%'
-          });
-        }
-      });
     }, sectionRef);
     return () => ctx.revert();
   }, []);
@@ -226,12 +191,15 @@ export const CareOrbitSection: React.FC = () => {
 
               {/* Central Hub Circle */}
               <div className="orbit-center-hub-circle" ref={centerHubRef}>
-                <div className="center-hub-inner">
-                  <div className="hub-pulse-icon">
-                    <i className="fas fa-heart-pulse"></i>
-                  </div>
-                  <strong>Assist Plus</strong>
-                  <span>Safe Care</span>
+                <div className="center-hub-inner" style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '4px' }}>
+                  <img
+                    src="/16__1_-removebg-preview.png"
+                    alt="Assist Plus Care UK"
+                    style={{ maxHeight: '68px', maxWidth: '135px', width: 'auto', marginBottom: '6px', objectFit: 'contain', display: 'block' }}
+                  />
+                  <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: 800, color: '#1C6F6B', letterSpacing: '0.5px', textTransform: 'uppercase', lineHeight: 1.2, textAlign: 'center' }}>
+                    Building Teams to Care
+                  </span>
                 </div>
               </div>
 

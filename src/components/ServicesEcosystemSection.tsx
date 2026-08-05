@@ -37,8 +37,8 @@ export const ServicesEcosystemSection: React.FC = () => {
       num: '01',
       category: 'Clinical Excellence',
       title: 'Registered Nurses (RNs)',
-      subtitle: 'Safe, Evidence-Based NHS & Private Clinical Staffing',
-      description: 'Our Registered Nurses deliver exceptional clinical care across NHS hospitals, private clinics, and residential care settings. Experienced in complex medication administration, clinical audits, wound management, and emergency interventions.',
+      subtitle: 'Safe, Evidence-Based Healthcare & Private Clinical Staffing',
+      description: 'Our Registered Nurses deliver exceptional clinical care across hospitals, private clinics, and residential care settings. Experienced in complex medication administration, clinical audits, wound management, and emergency interventions.',
       tags: ['Medication Administration', 'Wound Management', 'Care Planning', 'NMC Registered'],
       ctaText: 'Book Registered Nurses',
       ctaLink: '/quote',
@@ -50,11 +50,11 @@ export const ServicesEcosystemSection: React.FC = () => {
       id: 1,
       num: '02',
       category: 'Psychological Support',
-      title: 'Mental Health Nurses',
+      title: 'Registered Mental Health Nurses',
       subtitle: 'Compassionate Complex Psychological Care & Crisis Support',
-      description: 'Specialised psychiatric and mental health nurses providing therapeutic intervention, behavioral support, and emotional wellness management in secure units, care facilities, and community care settings.',
+      description: 'Specialised psychiatric and registered mental health nurses providing therapeutic intervention, behavioral support, and emotional wellness management in secure units, care facilities, and community care settings.',
       tags: ['Behavioral Support', 'Risk Assessment', 'Crisis Intervention', 'Emotional Wellbeing'],
-      ctaText: 'Request Mental Health Nurses',
+      ctaText: 'Request Registered Mental Health Nurses',
       ctaLink: '/quote',
       accentColor: '#1C6F6B',
       bgGradient: 'radial-gradient(circle, rgba(28, 111, 107, 0.18) 0%, transparent 70%)',
@@ -67,7 +67,7 @@ export const ServicesEcosystemSection: React.FC = () => {
       title: 'Healthcare Assistants (HCAs)',
       subtitle: 'Dignified Daily Living & Personal Care Assistance',
       description: 'Fully vetted HCAs offering compassionate assistance with personal hygiene, nutrition, mobility support, and vital signs monitoring across care homes, hospitals, and assisted living environments.',
-      tags: ['Personal Hygiene', 'Mobility Assistance', 'Vital Signs Audit', 'Nutritional Care'],
+      tags: ['Personal Hygiene', 'Mobility Assistance', 'Nutritional Care'],
       ctaText: 'Hire Healthcare Assistants',
       ctaLink: '/quote',
       accentColor: '#84CC16',
@@ -106,10 +106,10 @@ export const ServicesEcosystemSection: React.FC = () => {
       id: 5,
       num: '06',
       category: 'Specialist Clinical',
-      title: 'Specialist Nursing',
+      title: 'Specialist Nursing Services',
       subtitle: 'Advanced Clinical Care for Complex Health Needs',
       description: 'Highly trained specialist nurses proficient in tracheostomy care, stoma and colostomy management, PEG feeding, diabetes monitoring, palliative end-of-life care, and complex neurological conditions.',
-      tags: ['Stoma & Colostomy', 'PEG Feeding', 'Palliative Care', 'Diabetes Audit'],
+      tags: ['Stoma & Colostomy', 'PEG Feeding', 'Palliative Care'],
       ctaText: 'Hire Specialist Nurses',
       ctaLink: '/quote',
       accentColor: '#EC4899',
@@ -121,8 +121,8 @@ export const ServicesEcosystemSection: React.FC = () => {
       num: '07',
       category: 'Facility Management',
       title: 'Temporary & Bulk Bookings',
-      subtitle: 'Scalable Staffing Rota Solutions for NHS & Care Groups',
-      description: 'Streamlined bulk and temporary staffing contracts for care home chains, NHS trusts, and private hospitals needing dependable shift coverage, block bookings, or rapid capacity scaling.',
+      subtitle: 'Scalable Staffing Rota Solutions for Hospitals & Care Groups',
+      description: 'Streamlined bulk and temporary staffing contracts for care home chains, hospitals, and private healthcare providers needing dependable shift coverage, block bookings, or rapid capacity scaling.',
       tags: ['Block Bookings', 'Rota Coverage', 'Facility Scaling', 'Volume Discounts'],
       ctaText: 'Arrange Bulk Staffing',
       ctaLink: '/quote',
@@ -238,12 +238,6 @@ export const ServicesEcosystemSection: React.FC = () => {
             {/* LEFT SIDE (40%): 3D Vector Healthcare Illustration Stage */}
             <div className="story-left-col">
               <div className="story-illustration-card" ref={leftColRef}>
-                <div
-                  className="illustration-accent-badge"
-                  style={{ background: currentService.accentColor }}
-                >
-                  <i className="fas fa-stethoscope"></i> Assist Plus Healthcare
-                </div>
                 <div className="illustration-svg-wrap">
                   <img
                     src={currentService.image}

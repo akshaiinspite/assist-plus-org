@@ -7,7 +7,6 @@ import { MissionVisionSection } from '../components/MissionVisionSection';
 import { ServicesEcosystemSection } from '../components/ServicesEcosystemSection';
 import { CareOrbitSection } from '../components/CareOrbitSection';
 import { UnmatchedTrustSection } from '../components/UnmatchedTrustSection';
-import { TestimonialOrbitSection } from '../components/TestimonialOrbitSection';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -289,14 +288,14 @@ export const HomePage: React.FC = () => {
               <i className="fas fa-user-md marquee-icon-img" style={{ color: '#7ce3db', fontSize: '1.2rem' }}></i>
               <div className="marquee-text">
                 <strong>Registered Nurses</strong>
-                <span>NHS Experienced</span>
+                <span>Clinical Care Support</span>
               </div>
             </div>
 
             <div className="marquee-item highlight-specialist">
               <i className="fas fa-brain marquee-icon-img" style={{ color: '#ff9e9e', fontSize: '1.2rem' }}></i>
               <div className="marquee-text">
-                <strong>Mental Health Nurses</strong>
+                <strong>Registered Mental Health Nurses</strong>
                 <span>Psychological &amp; Crisis Support</span>
               </div>
             </div>
@@ -320,8 +319,7 @@ export const HomePage: React.FC = () => {
             <div className="marquee-item">
               <i className="fas fa-clinic-medical marquee-icon-img" style={{ color: '#7ce3db', fontSize: '1.2rem' }}></i>
               <div className="marquee-text">
-                <strong>Specialist Nursing</strong>
-                <span>Stoma, Palliative &amp; Diabetes</span>
+                <strong>Specialist Nursing Services</strong>
               </div>
             </div>
 
@@ -338,14 +336,14 @@ export const HomePage: React.FC = () => {
               <i className="fas fa-user-md marquee-icon-img" style={{ color: '#7ce3db', fontSize: '1.2rem' }}></i>
               <div className="marquee-text">
                 <strong>Registered Nurses</strong>
-                <span>NHS Experienced</span>
+                <span>Clinical Care Support</span>
               </div>
             </div>
 
             <div className="marquee-item highlight-specialist">
               <i className="fas fa-brain marquee-icon-img" style={{ color: '#ff9e9e', fontSize: '1.2rem' }}></i>
               <div className="marquee-text">
-                <strong>Mental Health Nurses</strong>
+                <strong>Registered Mental Health Nurses</strong>
                 <span>Psychological &amp; Crisis Support</span>
               </div>
             </div>
@@ -363,6 +361,21 @@ export const HomePage: React.FC = () => {
               <div className="marquee-text">
                 <strong>Live in Carers</strong>
                 <span>24/7 Home Support</span>
+              </div>
+            </div>
+
+            <div className="marquee-item">
+              <i className="fas fa-clinic-medical marquee-icon-img" style={{ color: '#7ce3db', fontSize: '1.2rem' }}></i>
+              <div className="marquee-text">
+                <strong>Specialist Nursing Services</strong>
+              </div>
+            </div>
+
+            <div className="marquee-item highlight-specialist">
+              <i className="fas fa-bolt marquee-icon-img" style={{ color: '#facc15', fontSize: '1.2rem' }}></i>
+              <div className="marquee-text">
+                <strong>24/7 Emergency Cover</strong>
+                <span>Immediate Urgent Support</span>
               </div>
             </div>
           </div>
@@ -428,12 +441,11 @@ export const HomePage: React.FC = () => {
               <div className="journey-check"><i className="fas fa-check-circle"></i></div>
               <div className="journey-stop-icon"><i className="fas fa-shield-alt"></i></div>
               <div className="journey-stop-number">01</div>
-              <div className="whoweare-card-image-wrapper"><img src="/whoweare_cqc_standards.png" alt="CQC Compliant Standards" className="whoweare-card-image" /><div className="whoweare-card-badge">CQC Verified</div></div>
+              <div className="whoweare-card-image-wrapper"><img src="/care qulaity comission.jpg" alt="CQC Compliant Standards" className="whoweare-card-image" /></div>
               <div className="whoweare-card-body">
                 <span className="whoweare-card-label"><i className="fas fa-shield-alt"></i> QUALITY ASSURANCE</span>
                 <h3 className="whoweare-card-heading">CQC Compliant Standards</h3>
                 <p className="whoweare-card-desc">Meeting top UK healthcare guidelines with regular clinical audits, policy alignment, and continuous compliance monitoring.</p>
-                <Link to="/quote" className="btn btn-outline-primary whoweare-card-btn">Explore Standards <i className="fas fa-arrow-right"></i></Link>
               </div>
             </div>
 
@@ -442,12 +454,11 @@ export const HomePage: React.FC = () => {
               <div className="journey-check"><i className="fas fa-check-circle"></i></div>
               <div className="journey-stop-icon"><i className="fas fa-id-card"></i></div>
               <div className="journey-stop-number">02</div>
-              <div className="whoweare-card-image-wrapper"><img src="/whoweare_dbs_staff.png" alt="DBS Checked Staff" className="whoweare-card-image" /><div className="whoweare-card-badge">DBS Vetted</div></div>
+              <div className="whoweare-card-image-wrapper"><img src="/dbs checked.png" alt="DBS Checked Staff" className="whoweare-card-image" /></div>
               <div className="whoweare-card-body">
                 <span className="whoweare-card-label"><i className="fas fa-id-card"></i> VETTING &amp; SAFETY</span>
                 <h3 className="whoweare-card-heading">DBS Checked Staff</h3>
                 <p className="whoweare-card-desc">Rigorously vetted nursing, care, and support professionals with enhanced background checks and identity verification.</p>
-                <Link to="/quote" className="btn btn-outline-primary whoweare-card-btn">View Vetting Process <i className="fas fa-arrow-right"></i></Link>
               </div>
             </div>
 
@@ -456,12 +467,11 @@ export const HomePage: React.FC = () => {
               <div className="journey-check"><i className="fas fa-check-circle"></i></div>
               <div className="journey-stop-icon"><i className="fas fa-headset"></i></div>
               <div className="journey-stop-number">03</div>
-              <div className="whoweare-card-image-wrapper"><img src="/whoweare_oncall_support.png" alt="24/7 On-Call Support" className="whoweare-card-image" /><div className="whoweare-card-badge">24/7 Active</div></div>
+              <div className="whoweare-card-image-wrapper"><img src="/support.jpg" alt="24/7 On-Call Support" className="whoweare-card-image" /></div>
               <div className="whoweare-card-body">
                 <span className="whoweare-card-label"><i className="fas fa-headset"></i> 24/7 AVAILABILITY</span>
                 <h3 className="whoweare-card-heading">24/7 On-Call Support</h3>
-                <p className="whoweare-card-desc">Round-the-clock staffing assistance and emergency care dispatch across NHS trusts, care homes, and private clients.</p>
-                <Link to="/quote" className="btn btn-outline-primary whoweare-card-btn">Contact On-Call Team <i className="fas fa-arrow-right"></i></Link>
+                <p className="whoweare-card-desc">Round-the-clock staffing assistance and emergency care dispatch across hospitals, care homes, and private clients.</p>
               </div>
             </div>
 
@@ -470,12 +480,11 @@ export const HomePage: React.FC = () => {
               <div className="journey-check"><i className="fas fa-check-circle"></i></div>
               <div className="journey-stop-icon"><i className="fas fa-file-contract"></i></div>
               <div className="journey-stop-number">04</div>
-              <div className="whoweare-card-image-wrapper"><img src="/whoweare_fully_insured.png" alt="Fully Insured Service" className="whoweare-card-image" /><div className="whoweare-card-badge">100% Insured</div></div>
+              <div className="whoweare-card-image-wrapper"><img src="/fully insured.jpg" alt="Fully Insured Service" className="whoweare-card-image" /></div>
               <div className="whoweare-card-body">
                 <span className="whoweare-card-label"><i className="fas fa-file-contract"></i> PEACE OF MIND</span>
                 <h3 className="whoweare-card-heading">Fully Insured Service</h3>
                 <p className="whoweare-card-desc">Comprehensive liability insurance coverage and quality guarantee for healthcare providers, families, and facilities.</p>
-                <Link to="/quote" className="btn btn-outline-primary whoweare-card-btn">Read Quality Guarantee <i className="fas fa-arrow-right"></i></Link>
               </div>
             </div>
 
@@ -498,9 +507,6 @@ export const HomePage: React.FC = () => {
 
       {/* MODERN UNMATCHED TRUST & METRICS SECTION WITH GSAP ORBIT ASSEMBLY & THREE.JS PARTICLES */}
       <UnmatchedTrustSection />
-
-      {/* INTERACTIVE TESTIMONIAL ORBIT SECTION */}
-      <TestimonialOrbitSection />
 
       {/* FREQUENTLY ASKED QUESTIONS SECTION */}
       <section className="faq-section" id="faq">

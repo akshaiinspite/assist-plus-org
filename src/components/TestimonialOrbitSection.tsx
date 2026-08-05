@@ -112,7 +112,7 @@ export const TestimonialOrbitSection: React.FC = () => {
       id: 3,
       role: 'Service Manager',
       location: 'London, UK',
-      quote: '"Their mental health nurses have made a huge difference in our unit. Highly skilled and supportive."',
+      quote: '"Their registered mental health nurses have made a huge difference in our unit. Highly skilled and supportive."',
       badge: 'Verified Partner',
       stars: 5,
       accentColor: '#F43F5E',

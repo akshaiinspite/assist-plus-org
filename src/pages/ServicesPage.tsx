@@ -47,13 +47,13 @@ const professionalsData: ProfessionalPanel[] = [
   },
   {
     id: 'mhn',
-    title: 'Mental Health Nurses (RMN)',
+    title: 'Registered Mental Health Nurses (RMN)',
     subtitle: 'Compassionate Mental Wellbeing & Recovery',
     badge: 'Specialist Recovery',
     icon: 'fas fa-brain',
     image: '/mental_health_3d.png',
     color: 'linear-gradient(135deg, #6366f1, #4338ca)',
-    desc: 'Our Mental Health Nurses support individuals experiencing a wide range of mental health conditions, delivering compassionate care while promoting emotional wellbeing, safety, and recovery.',
+    desc: 'Our Registered Mental Health Nurses support individuals experiencing a wide range of mental health conditions, delivering compassionate care while promoting emotional wellbeing, safety, and recovery.',
     responsibilities: [
       'Mental health risk assessments',
       'Behavioral support & de-escalation',
@@ -538,7 +538,6 @@ export const ServicesPage: React.FC = () => {
                         <i className={pro.icon}></i>
                       </div>
                       <div>
-                        <span className="srv-pro-badge">{pro.badge}</span>
                         <h3>{pro.title}</h3>
                         <p className="srv-pro-sub">{pro.subtitle}</p>
                       </div>
@@ -658,76 +657,7 @@ export const ServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════ */}
-      {/* SECTION 7 — STAFF MATCHING PROCESS          */}
-      {/* ═══════════════════════════════════════════ */}
-      <section className="srv-process-section about-reveal" id="staff-matching-process">
-        <div className="container">
-          <div className="about-section-header text-center">
-            <span className="about-section-badge"><i className="fas fa-route"></i> STEP-BY-STEP PROCESS</span>
-            <h2>How We Match The <span className="about-highlight">Right Staff</span></h2>
-            <p className="about-section-sub">Our rigorous matching framework guarantees safety, compliance, and clinical compatibility.</p>
-          </div>
 
-          <div className="srv-process-timeline">
-            <div className="srv-process-line-bg">
-              <div className="srv-process-line-progress"></div>
-            </div>
-
-            {/* Traveling Doctor Icon overlay along timeline */}
-            <div className="srv-process-doctor">
-              <div className="srv-doctor-pulse"></div>
-              <div className="srv-doctor-avatar">
-                <img src="/doctor_journey_icon.png" alt="Doctor Guide" />
-              </div>
-            </div>
-
-            <div className="srv-process-step about-reveal">
-              <div className="srv-step-number">01</div>
-              <div className="srv-step-card">
-                <div className="srv-step-content">
-                  <h3>Understanding Your Requirements</h3>
-                  <p>We thoroughly assess your staffing needs, required clinical qualifications, shift patterns, and care environment specifics.</p>
-                </div>
-                <div className="srv-step-img"><img src="/whoweare_oncall_support.png" alt="Requirements Assessment" /></div>
-              </div>
-            </div>
-
-            <div className="srv-process-step about-reveal">
-              <div className="srv-step-number">02</div>
-              <div className="srv-step-card">
-                <div className="srv-step-content">
-                  <h3>Precision Staff Selection</h3>
-                  <p>Suitable healthcare professionals are identified based on clinical experience, location, availability, and care values.</p>
-                </div>
-                <div className="srv-step-img"><img src="/whoweare_dbs_staff.png" alt="Staff Selection" /></div>
-              </div>
-            </div>
-
-            <div className="srv-process-step about-reveal">
-              <div className="srv-step-number">03</div>
-              <div className="srv-step-card">
-                <div className="srv-step-content">
-                  <h3>Compliance &amp; DBS Verification</h3>
-                  <p>Before every placement, mandatory credentials, CQC standards, right-to-work, and DBS clearance are re-verified.</p>
-                </div>
-                <div className="srv-step-img"><img src="/whoweare_cqc_standards.png" alt="Compliance Verification" /></div>
-              </div>
-            </div>
-
-            <div className="srv-process-step about-reveal">
-              <div className="srv-step-number">04</div>
-              <div className="srv-step-card">
-                <div className="srv-step-content">
-                  <h3>Placement &amp; 24/7 Ongoing Support</h3>
-                  <p>Our professionals arrive ready to integrate into your team, backed by continuous account management support.</p>
-                </div>
-                <div className="srv-step-img"><img src="/whoweare_fully_insured.png" alt="Ongoing Support" /></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ═══════════════════════════════════════════ */}
       {/* SECTION 8 — WHY CHOOSE OUR SERVICES        */}

@@ -16,9 +16,9 @@ export const TopBar: React.FC = () => {
             <span>+44 07448 295850</span>
           </a>
           <span className="top-dot">•</span>
-          <a href="mailto:admin@assistpluscare.co.uk" className="top-contact-item">
+          <a href="mailto:info@assistpluscare.co.uk" className="top-contact-item">
             <i className="fas fa-envelope top-icon"></i>
-            <span>admin@assistpluscare.co.uk</span>
+            <span>info@assistpluscare.co.uk</span>
           </a>
         </div>
 

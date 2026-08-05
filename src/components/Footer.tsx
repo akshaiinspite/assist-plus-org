@@ -33,8 +33,8 @@ export const Footer: React.FC = () => {
           <div className="footer-links">
             <h4>Staffing Solutions</h4>
             <ul>
-              <li><Link to="/services">Registered Nurses (NHS)</Link></li>
-              <li><Link to="/services">Mental Health Nurses</Link></li>
+              <li><Link to="/services">Registered Nurses</Link></li>
+              <li><Link to="/services">Registered Mental Health Nurses</Link></li>
               <li><Link to="/services">Healthcare Assistants (HCAs)</Link></li>
               <li><Link to="/services">Support Workers</Link></li>
               <li><Link to="/services">Live in Carers</Link></li>
@@ -48,7 +48,7 @@ export const Footer: React.FC = () => {
               <p><i className="fas fa-map-marker-alt" style={{ color: 'var(--primary)', marginRight: '8px' }}></i> 48 Mortise House, 11 Chailey Place, Hayes, UB1 3HW</p>
               <p><i className="fas fa-phone-alt" style={{ color: 'var(--primary)', marginRight: '8px' }}></i> <a href="tel:02036526052" style={{ color: '#fff' }}>020 3652 6052</a></p>
               <p><i className="fas fa-mobile-alt" style={{ color: 'var(--primary)', marginRight: '8px' }}></i> <a href="tel:07448295850" style={{ color: '#fff' }}>+44 07448 295850</a></p>
-              <p><i className="fas fa-envelope" style={{ color: 'var(--primary)', marginRight: '8px' }}></i> <a href="mailto:admin@assistpluscare.co.uk" style={{ color: '#fff' }}>admin@assistpluscare.co.uk</a></p>
+              <p><i className="fas fa-envelope" style={{ color: 'var(--primary)', marginRight: '8px' }}></i> <a href="mailto:info@assistpluscare.co.uk" style={{ color: '#fff' }}>info@assistpluscare.co.uk</a></p>
             </div>
           </div>
         </div>

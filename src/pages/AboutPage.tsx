@@ -882,21 +882,6 @@ export const AboutPage: React.FC = () => {
                     style={{ objectPosition: ind.objectPosition || 'center top' }}
                     loading="lazy" 
                   />
-                  <div className="ind-card-img-overlay"></div>
-                  
-                  {/* Distinct Uniform / Dress Tag Badge */}
-                  <div className="ind-card-tag">
-                    <span 
-                      className="ind-tag-dot" 
-                      style={{ backgroundColor: ind.outfitColor, boxShadow: `0 0 10px ${ind.outfitColor}` }}
-                    ></span>
-                    <span>{ind.outfitTag}</span>
-                  </div>
-
-                  {/* Floating Glass Icon Badge */}
-                  <div className="ind-card-icon-wrap" style={{ background: ind.color }}>
-                    <i className={`${ind.icon} ind-card-icon`}></i>
-                  </div>
                 </div>
 
                 {/* Card Content Body */}
