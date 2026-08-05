@@ -246,10 +246,15 @@ export const HomePage: React.FC = () => {
             <div className="hero-badge">
               <i className="fas fa-shield-alt" style={{ color: '#7ce3db' }}></i> CQC Compliant &amp; DBS Checked • Est. 2024
             </div>
-            {/* HERO HEADING REDESIGN */}
+            {/* HERO HEADING BRAND IMAGE */}
             <div className="hero-heading-box">
-              <h1 className="hero-main-title">Assist Plus Care</h1>
-              <p className="hero-sub-title">Building Teams to Care</p>
+              <h1 className="hero-main-title-img-wrap">
+                <img 
+                  src="/hero_title_image.png" 
+                  alt="Assist Plus Care — Building Teams to Care" 
+                  className="hero-title-img" 
+                />
+              </h1>
             </div>
             <p className="hero-lead">
               Trusted healthcare staffing provider supplying compassionate, fully vetted nurses, carers, and support workers to care facilities across the UK &amp; Ireland.

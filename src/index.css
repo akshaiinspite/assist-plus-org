@@ -455,47 +455,38 @@ button {
 }
 
 /* === HERO MAIN HEADING REDESIGN (EXACT SPECS) === */
-.hero-heading-box {
+.hero-main-title-img-wrap {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  margin-bottom: 22px;
-  padding: 0;
-  background: transparent;
-  border: none;
-  box-shadow: none;
+  align-items: center;
+  margin: 0 0 16px 0;
+  width: 100%;
 }
 
-.hero-main-title {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 72px;
-  line-height: 1.05;
-  letter-spacing: 0.5px;
-  text-transform: capitalize;
-  color: #123D52;
-  margin: 0 0 10px 0;
-  text-shadow: none;
-  transition: color 0.3s ease;
+.hero-title-img {
+  max-width: 620px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.35));
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.hero-main-title:hover {
-  color: #0E2F40;
+.hero-title-img:hover {
+  transform: scale(1.015);
+  filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.45));
 }
 
-.hero-sub-title {
-  font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.6;
-  letter-spacing: 8px;
-  text-transform: uppercase;
-  color: #C83333 !important;
-  opacity: 1 !important;
-  margin: 0;
-  text-shadow: none;
+@media (max-width: 991px) {
+  .hero-title-img {
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title-img {
+    max-width: 330px;
+  }
 }
 
 @media (min-width: 1400px) {
