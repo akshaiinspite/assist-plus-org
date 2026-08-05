@@ -248,13 +248,12 @@ export const HomePage: React.FC = () => {
             </div>
             {/* HERO HEADING BRAND IMAGE */}
             <div className="hero-heading-box">
-              <h1 className="hero-main-title-img-wrap">
-                <img 
-                  src="/hero_title_image.png" 
-                  alt="Assist Plus Care — Building Teams to Care" 
-                  className="hero-title-img" 
-                />
-              </h1>
+              <img
+                src="/hero_brand_heading.png"
+                alt="Assist Plus Care — Building Teams to Care"
+                className="hero-heading-img"
+              />
+              <h1 className="sr-only">Assist Plus Care — Building Teams to Care</h1>
             </div>
             <p className="hero-lead">
               Trusted healthcare staffing provider supplying compassionate, fully vetted nurses, carers, and support workers to care facilities across the UK &amp; Ireland.
