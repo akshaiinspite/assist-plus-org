@@ -3,7 +3,6 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { TopBar } from './components/TopBar';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
-import { Preloader } from './components/Preloader';
 import { CustomCursor } from './components/CustomCursor';
 import { HomePage } from './pages/HomePage';
 import { QuotePage } from './pages/QuotePage';
@@ -23,7 +22,6 @@ export const App: React.FC = () => {
     <div className="app-container">
       <CustomCursor />
       <ScrollToTop />
-      <Preloader />
       <TopBar />
       <Navbar />
       <main>
