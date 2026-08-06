@@ -697,7 +697,7 @@ export const AboutPage: React.FC = () => {
 
             {/* Paragraph Text */}
             <p className="about-hero-para">
-              Every healthcare organisation deserves dependable professionals who deliver compassionate, person-centred care. At Assist Plus Care UK, we help care providers strengthen their workforce with experienced healthcare professionals who seamlessly integrate into existing teams and maintain the highest standards of care. Whether supporting planned staffing requirements or responding to urgent shortages, we are committed to providing reliable healthcare staffing solutions across the UK and Ireland.
+              Every healthcare organisation deserves dependable professionals who deliver compassionate, person-centred care. At Assist Plus Care UK, we help care providers strengthen their workforce with experienced healthcare professionals who seamlessly integrate into existing teams and maintain the highest standards of care. Whether supporting planned staffing requirements or responding to urgent shortages, we are committed to providing reliable healthcare staffing solutions across the UK.
             </p>
 
             {/* CTA Button with Magnetic Hover */}
@@ -714,7 +714,7 @@ export const AboutPage: React.FC = () => {
 
           {/* Hero Image with Scale & Parallax Drift */}
           <div className="about-hero-img-wrap">
-            <img src="/about_hero_image.png" alt="Assist Plus Care Team" className="about-hero-img" />
+            <img src="/about_journey_human_hero.png" alt="Assist Plus Care Team" className="about-hero-img" />
             <div className="about-hero-img-badge">
               <i className="fas fa-award"></i>
               <div>
@@ -809,7 +809,7 @@ export const AboutPage: React.FC = () => {
 
             <div className="about-journey-image-col about-reveal">
               <div className="about-journey-img-wrap">
-                <img src="/about_journey_image.png" alt="Compassionate Care" className="about-journey-img" />
+                <img src="/about_journey_human_hero.png" alt="Compassionate Care" className="about-journey-img" />
               </div>
             </div>
           </div>

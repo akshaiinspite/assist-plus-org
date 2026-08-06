@@ -402,13 +402,13 @@ export const HomePage: React.FC = () => {
         <div className="container">
           <div className="whoweare-intro-header text-center reveal">
             <span className="about-badge-logo">
-              <i className="fas fa-shield-heart"></i> ABOUT US — EST. 2024
+              <i className="fas fa-route"></i> OUR JOURNEY
             </span>
             <h2 className="about-title-logo">
-              Assist Plus Care UK — <span className="highlight-tagline">Building Teams to Care</span>
+              Supporting Better Care Through <span className="highlight-tagline">Trusted Healthcare Staffing</span>
             </h2>
             <p className="about-lead-styled">
-              Assist Plus Care UK is a leading healthcare staffing agency dedicated to delivering safe, compassionate, and professional care through highly skilled staff. Since our establishment in 2024, we have become a trusted partner for organisations across the UK and Ireland, known for our <strong className="text-teal">reliability, professionalism, and person-centred approach</strong>.
+              Every healthcare organisation deserves dependable professionals who deliver compassionate, person-centred care. At Assist Plus Care UK, we help care providers strengthen their workforce with experienced healthcare professionals who seamlessly integrate into existing teams and maintain the highest standards of care. Whether supporting planned staffing requirements or responding to urgent shortages, we are committed to providing reliable healthcare staffing solutions across the UK.
             </p>
           </div>
 
