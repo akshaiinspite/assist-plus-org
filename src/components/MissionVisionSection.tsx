@@ -287,6 +287,7 @@ export const MissionVisionSection: React.FC = () => {
                 />
 
                 {/* Connected Doctors & Digital Healthcare Nodes */}
+                
                 <g ref={visionDoctorsRef}>
                   <circle cx="60" cy="75" r="8" fill="#38BDF8" />
                   <circle cx="180" cy="75" r="8" fill="#38BDF8" />
