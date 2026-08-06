@@ -715,13 +715,6 @@ export const AboutPage: React.FC = () => {
           {/* Hero Image with Scale & Parallax Drift */}
           <div className="about-hero-img-wrap">
             <img src="/about_journey_human_hero.png" alt="Assist Plus Care Team" className="about-hero-img" />
-            <div className="about-hero-img-badge">
-              <i className="fas fa-award"></i>
-              <div>
-                <strong>Est. 2024</strong>
-                <span>Trusted Staffing</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
