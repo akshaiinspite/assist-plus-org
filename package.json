@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:zip": "npm run build && tar -a -c -f hostinger-build.zip -C dist .",
     "preview": "vite preview"
   },
   "dependencies": {
