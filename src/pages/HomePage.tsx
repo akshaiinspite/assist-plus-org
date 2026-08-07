@@ -238,14 +238,18 @@ export const HomePage: React.FC = () => {
         {/* Dark Gradient Overlay for High Contrast & Professional Aesthetics */}
         <div className="hero-video-overlay"></div>
 
-        {/* Watermark Shadow Mask to Cover Gemini Icon in Corner */}
-        <div className="hero-video-watermark-mask"></div>
+        {/* Watermark Cover with Matching Content CTA Button covering Gemini Icon in Corner */}
+        <div className="hero-video-watermark-mask">
+          <Link to="/quote" className="hero-watermark-cta-btn">
+            <span className="pulse-dot"></span>
+            <i className="fas fa-bolt" style={{ color: '#facc15' }}></i>
+            <span>24/7 Emergency Staffing</span>
+            <i className="fas fa-arrow-right"></i>
+          </Link>
+        </div>
 
         <div className="container hero-container">
           <div className="hero-content">
-            <div className="hero-badge">
-              <i className="fas fa-shield-alt" style={{ color: '#7ce3db' }}></i> CQC Compliant &amp; DBS Checked • Est. 2024
-            </div>
             {/* HERO HEADING BRAND IMAGE */}
             <div className="hero-heading-box">
               <img
@@ -266,8 +270,8 @@ export const HomePage: React.FC = () => {
 
             <div className="hero-stats">
               <div className="hero-stat">
-                <strong>Est. 2024</strong>
-                <span>Trusted Staffing</span>
+                <strong>Quality Care</strong>
+                <span>Verified Staff</span>
               </div>
               <div className="hero-stat-divider"></div>
               <div className="hero-stat">
@@ -405,7 +409,7 @@ export const HomePage: React.FC = () => {
               <i className="fas fa-route"></i> OUR JOURNEY
             </span>
             <h2 className="about-title-logo">
-              Supporting Better Care Through <span className="highlight-tagline">Trusted Healthcare Staffing</span>
+              Supporting Care Homes &amp; Individuals Through <span className="highlight-tagline">Trusted Healthcare Staffing</span>
             </h2>
             <p className="about-lead-styled">
               Every healthcare organisation deserves dependable professionals who deliver compassionate, person-centred care. At Assist Plus Care UK, we help care providers strengthen their workforce with experienced healthcare professionals who seamlessly integrate into existing teams and maintain the highest standards of care. Whether supporting planned staffing requirements or responding to urgent shortages, we are committed to providing reliable healthcare staffing solutions across the UK.
@@ -473,12 +477,11 @@ export const HomePage: React.FC = () => {
             {/* STOP 3 — 24/7 (Left) */}
             <div className="journey-stop stop-left stop-3">
               <div className="journey-check"><i className="fas fa-check-circle"></i></div>
-              <div className="journey-stop-icon"><i className="fas fa-headset"></i></div>
+              <div className="journey-stop-icon"><i className="fas fa-clock"></i></div>
               <div className="journey-stop-number">03</div>
-              <div className="whoweare-card-image-wrapper"><img src="/support.jpg" alt="24/7 On-Call Support" className="whoweare-card-image" /></div>
+              <div className="whoweare-card-image-wrapper"><img src="/support.jpg" alt="24/7 Availability" className="whoweare-card-image" /></div>
               <div className="whoweare-card-body">
-                <span className="whoweare-card-label"><i className="fas fa-headset"></i> 24/7 AVAILABILITY</span>
-                <h3 className="whoweare-card-heading">24/7 On-Call Support</h3>
+                <h3 className="whoweare-card-heading">24/7 Availability</h3>
                 <p className="whoweare-card-desc">Round-the-clock staffing assistance and emergency care dispatch across hospitals, care homes, and private clients.</p>
               </div>
             </div>

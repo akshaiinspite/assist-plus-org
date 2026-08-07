@@ -144,9 +144,9 @@ export const MissionVisionSection: React.FC = () => {
           <span className="mv-badge">
             <i className="fas fa-compass" style={{ color: '#38BDF8' }}></i> OUR PURPOSE
           </span>
-          <h2 className="mv-title">Building Care, Shaping Vision</h2>
+          <h2 className="mv-title">A TRUSTED STAFFING PARTNER</h2>
           <p className="mv-subtitle">
-            Driven by compassion, delivering seamless healthcare staffing today and ensuring continuity of care for tomorrow across the UK &amp; Ireland.
+            Supporting care homes to maintain safe, compliant, &amp; high-quality care delivery without compromising operational efficiency.
           </p>
         </div>
 
@@ -247,13 +247,11 @@ export const MissionVisionSection: React.FC = () => {
             </div>
 
             <h3 className="mv-card-title mission-title-wipe" ref={missionHeadingRef}>
-              Compassionate Care, Delivered
+              Excellence in Healthcare Workforce
             </h3>
 
             <div className="mv-card-desc" ref={missionDescRef}>
-              <p className="mv-line">To build strong, compassionate care teams that deliver safe,</p>
-              <p className="mv-line">high quality, and dignified care to every individual</p>
-              <p className="mv-line">across nursing homes, care homes, and complex care settings.</p>
+              <p className="mv-line">To build strong, compassionate care teams that deliver safe, high-quality, and dignified care to every individual across nursing homes, care homes, and complex care settings.</p>
             </div>
 
             <div className="mv-card-footer">
@@ -324,9 +322,7 @@ export const MissionVisionSection: React.FC = () => {
             </h3>
 
             <div className="mv-card-desc" ref={visionDescRef}>
-              <p className="mv-line">A healthcare system where every care provider has immediate</p>
-              <p className="mv-line">access to the right staff at the right time — ensuring unbroken</p>
-              <p className="mv-line">continuity, patient safety, and clinical excellence.</p>
+              <p className="mv-line">A healthcare system where every care provider has immediate access to the right staff at the right time — ensuring unbroken continuity, patient safety, and clinical excellence.</p>
             </div>
 
             <div className="mv-card-footer">

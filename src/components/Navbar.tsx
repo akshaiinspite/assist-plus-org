@@ -32,7 +32,7 @@ export const Navbar: React.FC = () => {
     <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container nav-inner">
         <Link to="/" className="logo" onClick={closeMobileMenu}>
-          <img src="/16__1_-removebg-preview.png" alt="Assist Plus Care" className="logo-img" />
+          <img src="/logo (3).png" alt="Assist Plus Care" className="logo-img" />
         </Link>
 
         <nav className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>

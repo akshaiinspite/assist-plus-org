@@ -692,7 +692,7 @@ export const AboutPage: React.FC = () => {
 
             {/* Split Text Heading */}
             <h1 className="about-hero-heading">
-              {splitHeadingWords('Supporting Better Care Through Trusted Healthcare Staffing')}
+              {splitHeadingWords('Supporting Care Homes & Individuals Through Trusted Healthcare Staffing')}
             </h1>
 
             {/* Paragraph Text */}

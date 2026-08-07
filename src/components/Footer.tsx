@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
         <div className="footer-grid">
           <div className="footer-about">
             <Link to="/" className="footer-logo">
-              <img src="/16__1_-removebg-preview.png" alt="Assist Plus Care" className="logo-img" />
+              <img src="/logo (3).png" alt="Assist Plus Care" className="logo-img" />
             </Link>
             <p>Assist Plus Care UK is a trusted healthcare staffing provider supporting nursing homes, residential care homes, mental health units, supported living services, private hospitals, and hospice organisations across the UK &amp; Ireland. Established in 2024.</p>
             <div className="footer-social">
